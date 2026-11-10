@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advik Behera | Electrical Engineering ePortfolio | Georgia Tech</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Automatic HEIC Image Decoder for Chrome/Firefox/Edge Support -->
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gtnavy: '#003057',
+                        gtnavyalt: '#081f38',
+                        gtgold: '#B3A369',
+                        gtgoldlight: '#d4c692',
+                        gtgoldhover: '#9c8c54',
+                        darkslate: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .photo-slot {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+        .photo-slot:hover .photo-overlay {
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .grid-bg {
+            background-image: radial-gradient(rgba(179, 163, 105, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-gtgold selection:text-gtnavy">
+
+    <!-- Top Status Bar -->
+    <div class="bg-gtnavyalt text-white text-xs py-2 px-4 border-b border-gtgold/30 print:hidden">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-mono text-[11px] text-slate-300">ADVIK BEHERA • ELECTRICAL ENGINEERING PORTFOLIO • GEORGIA TECH</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="mailto:abehera@gatech.edu" class="text-[11px] text-gtgoldlight hover:text-white font-mono transition">
+                    <i class="fas fa-envelope mr-1"></i>abehera@gatech.edu
+                </a>
+                <button id="guide-trigger-btn" onclick="toggleGuideModal()" class="bg-gtgold/20 hover:bg-gtgold text-gtgoldlight hover:text-gtnavy border border-gtgold/40 font-semibold px-2.5 py-0.5 rounded text-[11px] transition flex items-center gap-1">
+                    <i class="fas fa-sliders-h"></i> Preview / Photo Setup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Sticky Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Identity -->
+            <button onclick="switchTab('home')" class="flex items-center gap-3.5 text-left group focus:outline-none">
+                <div class="w-11 h-11 rounded-xl bg-gtnavy flex items-center justify-center text-gtgold font-extrabold text-lg shadow-md border border-gtgold/40 group-hover:scale-105 transition">
+                    AB
+                </div>
+                <div>
+                    <span class="block font-extrabold text-lg text-gtnavy tracking-tight leading-none">Advik Behera</span>
+                    <span class="block text-xs text-slate-500 font-medium mt-1 font-mono">B.S. Electrical Engineering '30</span>
+                </div>
+            </button>
+
+            <!-- Desktop Navigation Pills -->
+            <nav class="hidden lg:flex items-center gap-1 bg-slate-100 p-1.5 rounded-xl border border-slate-200/80">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-bold text-gtnavy bg-white shadow-sm transition">Home</button>
+                <button onclick="switchTab('about')" id="nav-about" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-gtnavy transition">About Me</button>
+                <button onclick="switchTab('research')" id="nav-research" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-gtnavy transition">Photonics Research</button>
+                <button onclick="switchTab('projects')" id="nav-projects" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-gtnavy transition">Technical Projects</button>
+                <button onclick="switchTab('career')" id="nav-career" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-gtnavy transition">Career Goals</button>
+                <button onclick="switchTab('resume')" id="nav-resume" class="nav-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-gtnavy transition">Resume & Contact</button>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2.5">
+                <button onclick="switchTab('resume')" class="hidden sm:inline-flex items-center gap-2 bg-gtnavy hover:bg-gtnavyalt text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow transition">
+                    <i class="fas fa-file-pdf text-gtgold"></i> View Resume
+                </button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fas fa-bars text-lg" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-1.5 shadow-xl">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-bold text-gtnavy bg-slate-100">Home / Welcome</button>
+            <button onclick="switchTab('about'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">About Me & Leadership</button>
+            <button onclick="switchTab('research'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Photonics Research (OSU)</button>
+            <button onclick="switchTab('projects'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Technical Projects & Discovery</button>
+            <button onclick="switchTab('career'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Career Goals & Roadmap</button>
+            <button onclick="switchTab('resume'); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">Resume & Contact</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- =====================================================================
+             SECTION 1: HOME / WELCOME STATEMENT
+             ===================================================================== -->
+        <section id="page-home" class="page-section fade-in">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-br from-gtnavyalt via-gtnavy to-slate-900 text-white py-16 lg:py-24 overflow-hidden border-b-4 border-gtgold">
+                <div class="absolute inset-0 grid-bg opacity-40"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Welcome Text & Elevator Pitch -->
+                        <div class="lg:col-span-7 space-y-6">
+                            <div class="inline-flex items-center gap-2 bg-gtgold/20 border border-gtgold/40 text-gtgoldlight px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold">
+                                <i class="fas fa-wave-square"></i> PHOTONICS • EMBEDDED SYSTEMS • PCB DESIGN • RF
+                            </div>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                                Exploring the Intersection of <span class="text-gtgold">Electronics, Photonics</span>, and Physical Hardware.
+                            </h1>
+                            
+                            <!-- Required 3-4 Sentence Welcome Statement -->
+                            <div class="bg-white/5 border-l-4 border-gtgold p-5 rounded-r-xl backdrop-blur-sm space-y-2">
+                                <span class="text-[11px] font-mono uppercase tracking-wider text-gtgold font-bold block">Welcome Statement</span>
+                                <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+                                    Welcome to my engineering ePortfolio! I am Advik Behera, an undergraduate Electrical Engineering student at the Georgia Institute of Technology driven by a curiosity for how physical principles—from optical waves to electronic signals—can be harnessed to build real-world hardware systems. Having conducted experimental photonics research on optical true-time-delay systems at The Ohio State University and currently developing embedded systems and Altium PCB libraries with Georgia Tech’s HYTech Racing Formula SAE Electric team, I thrive on hands-on prototyping and troubleshooting. This portfolio documents my technical projects, research contributions, academic roadmap, and evolving career goals in optical and electronic engineering.
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3.5 pt-2">
+                                <button onclick="switchTab('projects')" class="bg-gtgold hover:bg-gtgoldhover text-gtnavy font-extrabold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2 text-sm">
+                                    <i class="fas fa-microchip"></i> View Technical Projects
+                                </button>
+                                <button onclick="switchTab('research')" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-6 py-3.5 rounded-xl backdrop-blur transition flex items-center gap-2 text-sm">
+                                    <i class="fas fa-laser-pointer text-gtgold"></i> Photonics Research
+                                </button>
+                                <button onclick="switchTab('about')" class="bg-transparent hover:bg-white/10 border border-slate-500 text-slate-200 font-semibold px-5 py-3.5 rounded-xl transition flex items-center gap-2 text-sm">
+                                    About Me <i class="fas fa-arrow-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PHOTO SLOT 1: HERO HEADSHOT / LAB PORTRAIT -->
+                        <div class="lg:col-span-5">
+                            <div class="bg-slate-900/90 border-2 border-gtgold/50 rounded-2xl p-4 shadow-2xl">
+                                <!-- =========================================================
+                                     PHOTO SLOT 1: Checks IMG_4953.heic (with JPG/JPEG & BuzzPic fallbacks)
+                                     ========================================================= -->
+                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-800 aspect-[4/3] flex flex-col items-center justify-center border border-slate-700">
+                                    <img id="preview-slot-1" src="IMG_4953.heic" data-heic-src="IMG_4953.heic"
+                                         onload="this.style.display='block'; document.getElementById('fallback-slot-1').style.display='none';"
+                                         onerror="tryFallbackImage(this, ['IMG_4953.jpg', 'IMG_4953.JPG', 'IMG_4953.jpeg', 'BuzzPic.jpeg', 'Buzzpic.jpg'], 'fallback-slot-1')"
+                                         class="w-full h-full object-cover object-top bg-white" alt="Advik Behera Portrait">
+                                    
+                                    <!-- Default Technical Graphic Fallback -->
+                                    <div id="fallback-slot-1" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-gtnavy to-slate-900">
+                                        <svg class="w-20 h-20 text-gtgold mb-3 opacity-90" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <circle cx="50" cy="36" r="18" stroke-dasharray="4 2"/>
+                                            <path d="M22 86 C22 64, 78 64, 78 86" stroke-linecap="round"/>
+                                            <circle cx="50" cy="36" r="12" fill="rgba(179,163,105,0.2)"/>
+                                            <path d="M10 20 L30 20 L35 12 L40 28 L45 20 L90 20" stroke="#38bdf8" stroke-width="1.5" opacity="0.6"/>
+                                        </svg>
+                                        <span class="text-white font-bold text-base">Advik Behera</span>
+                                        <span class="text-gtgold text-xs font-mono mt-0.5">B.S. Electrical Engineering • Georgia Tech</span>
+                                        <p class="text-[11px] text-slate-300 mt-2 max-w-xs">
+                                            Click to preview <code class="text-gtgold font-mono">IMG_4953.heic</code> here, or place it in your GitHub repository folder.
+                                        </p>
+                                    </div>
+
+                                    <!-- Interactive Browser Upload Overlay -->
+                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                        <i class="fas fa-camera text-2xl text-gtgold mb-1.5"></i>
+                                        <span class="font-bold text-xs">Click to Preview Local Photo (<code class="text-gtgold font-mono">IMG_4953.heic</code>)</span>
+                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-1', 'fallback-slot-1')">
+                                    </label>
+                                </div>
+
+                                <div class="mt-3 flex items-center justify-between text-xs px-1">
+                                    <span class="text-slate-300 font-mono"><i class="fas fa-map-marker-alt text-gtgold mr-1.5"></i>Atlanta, GA • abehera@gatech.edu</span>
+                                    <span class="text-gtgold font-mono text-[11px]">BSEE Class of 2030</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Engineering Pillars & Quick Navigation -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-200 pb-6">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Technical Focus Areas</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Where Physics Meets Practical Hardware</h2>
+                    </div>
+                    <p class="text-sm text-slate-600 max-w-md mt-2 md:mt-0">
+                        My work spans experimental optics, vehicle dashboard UI & custom PCB design, and precision mechanical prototyping.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1: Photonics -->
+                    <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 hover:border-gtgold hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-gtnavy text-gtgold flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                            <span class="text-[11px] font-mono uppercase font-bold text-slate-400">The Ohio State University • Battelle</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Photonics & Optical Systems</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Researched optical true-time-delay systems for phased-array applications in Prof. Betty Lise Anderson’s lab. Applied system matrices and polarization control, repaired a 6-year-old optical output-block failure, and improved infrared detector sensitivity thresholds from ~20 nW to 80 nW.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('research')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-gtnavy hover:text-white text-gtnavy font-bold text-xs transition flex items-center justify-center gap-2">
+                            Read Research Breakdown <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Feature 2: HYTech Dashboard UI & Altium -->
+                    <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 hover:border-gtgold hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-gtnavy text-gtgold flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <span class="text-[11px] font-mono uppercase font-bold text-slate-400">HYTech Racing • Formula SAE Electric</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Dashboard UI & Altium PCB Design</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Working on the HYTech Racing Dashboard UI and designing custom schematic symbols, IPC footprints, Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>), and custom onboarding PCBs in Altium Designer.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('projects')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-gtnavy hover:text-white text-gtnavy font-bold text-xs transition flex items-center justify-center gap-2">
+                            Explore HYTech & PCB Projects <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Feature 3: Prototyping & Software -->
+                    <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 hover:border-gtgold hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-gtnavy text-gtgold flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <span class="text-[11px] font-mono uppercase font-bold text-slate-400">3D Mechanisms • Python & Streamlit</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Prototyping & Data Applications</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Fabricating multi-part mechanical assemblies—including a transforming mechanical pawn requiring precision 3D printing, dremeling, sanding, and lubrication—alongside interactive Python/Streamlit data visualization dashboards.
+                            </p>
+                        </div>
+                        <button onclick="switchTab('projects')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-gtnavy hover:text-white text-gtnavy font-bold text-xs transition flex items-center justify-center gap-2">
+                            See Builds & Software <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 2: ABOUT ME / BIOGRAPHY & LEADERSHIP
+             ===================================================================== -->
+        <section id="page-about" class="page-section hidden fade-in py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="max-w-3xl mb-12">
+                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Biography & Personal Narrative</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Hands-On Curiosity, Leadership, and Engineering</h1>
+                    <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+                    <!-- Detailed Narrative -->
+                    <div class="lg:col-span-7 space-y-5 text-slate-700 leading-relaxed text-base bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                        <h2 class="text-xl font-bold text-gtnavy">From Understanding How Things Work to Building Them</h2>
+                        <p>
+                            Growing up in Dublin, Ohio, I was never satisfied with treating technology like a black box. Whether I was adjusting mechanical linkages, experimenting with 3D printing tolerances, or diving into advanced mathematics and physics at Dublin Jerome High School and through dual-enrollment coursework at The Ohio State University (completing Calculus III and earning a 3.925 OSU GPA alongside a 4.53 high school GPA), I always wanted to understand the physical laws governing a system—and then use that knowledge to build something tangible.
+                        </p>
+                        <p>
+                            My formal entry into engineering research began in Professor Betty Lise Anderson’s photonics research laboratory at The Ohio State University, collaborating with the OSU ECE Associate Chair of Instruction and Battelle Memorial Institute researchers on optical true-time-delay systems for phased-array applications. Aligning optical components on a laser bench, applying system matrices and polarization control, building a level-shifting/calibration setup, and diagnosing and repairing a six-year-old optical output-block failure taught me that real-world engineering rarely stays inside a single textbook chapter. You have to understand both the physics of the signal and the practical realities of the hardware processing it.
+                        </p>
+                        <p>
+                            When I arrived at the Georgia Institute of Technology to pursue my Bachelor of Science in Electrical Engineering, I immediately sought out environments where I could continue building alongside ambitious teammates. Joining <strong>HYTech Racing</strong>, Georgia Tech’s Formula SAE Electric team, allowed me to jump directly into both software and hardware—contributing to the vehicle's <strong>Dashboard UI</strong> and designing custom schematic symbols, PCB footprints, and onboarding circuit layouts in <strong>Altium Designer</strong>.
+                        </p>
+                        <p>
+                            Beyond the laboratory and workspace, leadership and competitive athletics have shaped how I collaborate and solve problems under pressure. Serving as <strong>Student Council President</strong> at Dublin Jerome High School—where I led a 40-member council, organized the annual Club Fair for 50+ clubs and 1,500 students, directed $2,000 fundraising initiatives, and coordinated the district's Santa Phones program for 80 teachers—and serving as President of the <strong>Hindu Club</strong> (growing membership from zero to 40+ members and coordinating events for 1,000+ students) taught me how to lead diverse teams with accountability. Similarly, serving as an Officer in <strong>Model United Nations</strong> (mentoring 60+ members and earning Best Delegate at OSUMUN 2024 and MUNUM 2026, plus Outstanding Delegate at MUNUM 2025) sharpened my ability to communicate complex ideas clearly. On the volleyball court, competing as a <strong>15U AAU Boys Volleyball National Champion</strong>, a 16U Steel City Tournament Champion, a Second-Team All-Region/All-OCC varsity outside hitter, and playing Men’s Club Volleyball at Georgia Tech instilled the competitive drive and composure I bring to every engineering challenge.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Photo Slot 2 + Education & Involvement Cards -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <!-- PHOTO SLOT 2: VOLLEYBALL ACTION PHOTO (IMG_9886.jpg) -->
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                            <!-- =========================================================
+                                 PHOTO SLOT 2: Uses IMG_9886.jpg (Volleyball action shot)
+                                 ========================================================= -->
+                            <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/5] flex flex-col items-center justify-center border border-slate-200">
+                                <img id="preview-slot-2" src="IMG_9886.jpg"
+                                     onload="this.style.display='block'; document.getElementById('fallback-slot-2').style.display='none';"
+                                     onerror="tryFallbackImage(this, ['IMG_9886.jpeg', 'img_9886.jpg'], 'fallback-slot-2')"
+                                     class="w-full h-full object-cover" alt="Advik Behera Volleyball Action Shot">
+                                
+                                <div id="fallback-slot-2" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-gtnavy to-slate-800 text-white">
+                                    <i class="fas fa-volleyball-ball text-3xl text-gtgold mb-2"></i>
+                                    <span class="font-bold text-sm">Competitive Volleyball Action Shot</span>
+                                    <span class="text-[11px] font-mono text-gtgold mt-0.5">IMG_9886.jpg</span>
+                                    <p class="text-xs text-slate-300 mt-2">
+                                        Click to preview <code class="text-gtgold font-mono">IMG_9886.jpg</code> or include it in your GitHub repository.
+                                    </p>
+                                </div>
+
+                                <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                    <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
+                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_9886.jpg</code></span>
+                                    <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-2', 'fallback-slot-2')">
+                                </label>
+                            </div>
+                            <div class="mt-2.5 flex justify-between items-center text-xs text-slate-500 px-1">
+                                <span>Varsity &amp; Club Volleyball (#4) • 15U AAU National Champion</span>
+                            </div>
+                        </div>
+
+                        <!-- Academic Profile Card -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+                            <h3 class="font-bold text-gtnavy text-base flex items-center gap-2">
+                                <i class="fas fa-graduation-cap text-gtgold"></i> Education & Academic Foundation
+                            </h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Georgia Institute of Technology</span>
+                                        <span class="text-xs font-mono text-gtnavy">Expected May 2030</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mt-0.5">B.S. in Electrical Engineering (BSEE)</p>
+                                    <p class="text-xs text-slate-500 mt-1.5">
+                                        <strong>Coursework Exposure:</strong> ECE 1100 (Intro to ECE), CS 1301 (Intro to Computing in Python), MATH 1554 (Linear Algebra), Economics, Digital Audio & Music Technology.
+                                    </p>
+                                </div>
+
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>The Ohio State University & CSCC</span>
+                                        <span class="text-xs font-mono text-gtnavy">2024 – 2026</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mt-0.5">OSU GPA: 3.925 (including Calculus III) • CSCC GPA: 4.00</p>
+                                </div>
+
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Dublin Jerome High School</span>
+                                        <span class="text-xs font-mono text-gtnavy">Graduated May 2026</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mt-0.5">GPA: 4.53 • Rank: 13 / 497 • ACT: 36 • SAT: 1540</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campus Organizations -->
+                        <div class="bg-gtnavy text-white p-6 rounded-2xl shadow-sm space-y-3">
+                            <h3 class="font-bold text-gtgold text-sm uppercase tracking-wider font-mono">Georgia Tech Organizations</h3>
+                            <ul class="space-y-2 text-xs text-slate-200">
+                                <li class="flex items-center gap-2"><i class="fas fa-car-battery text-gtgold w-4"></i> <strong>HYTech Racing:</strong> Formula SAE Electric (Dashboard UI & Altium PCB)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-atom text-gtgold w-4"></i> <strong>Nanotechnology & Photonics Society (NPS):</strong> Active Member</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-users text-gtgold w-4"></i> <strong>Society of Asian Scientists & Engineers (SASE):</strong> Member</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-volleyball-ball text-gtgold w-4"></i> <strong>GT Men's Club Volleyball:</strong> Competitive Player</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 3: PHOTONICS & OPTICAL SYSTEMS RESEARCH
+             ===================================================================== -->
+        <section id="page-research" class="page-section hidden fade-in py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mb-12">
+                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">The Ohio State University • Battelle Collaboration</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Exploring Photonics: Research in Optical Systems</h1>
+                    <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Research Overview Banner -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 mb-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded-md">Photonics Research Associate (2024–2026)</span>
+                                <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded-md">Prof. Betty Lise Anderson's Lab</span>
+                                <span class="bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold px-3 py-1 rounded-md">Battelle Memorial Institute Collaboration</span>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900">Optical True-Time-Delay Systems for Phased-Array Applications</h2>
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                Phased-array antennas steer radio frequency (RF) beams electronically without physically rotating an antenna dish by controlling the timing of signals arriving at each antenna element. Traditional electronic phase shifters suffer from "beam squint" across wide bandwidths, where different frequencies point in slightly different directions. <strong>Optical True-Time-Delay (TTD)</strong> solves this problem by converting RF signals into optical signals and routing the light through physical path-length delays before converting them back into electrical signals.
+                            </p>
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                Working as a Photonics Research Associate at The Ohio State University in collaboration with the OSU ECE Associate Chair of Instruction (Prof. Betty Lise Anderson) and Battelle Memorial Institute researchers, I conducted hands-on experimental optics research focused on system matrices, polarization control, optical alignment, infrared detection, and electronic signal calibration.
+                            </p>
+                        </div>
+
+                        <!-- PHOTO SLOT 3: OPTICS LAB PHOTO (IMG_0024.jpg) -->
+                        <div class="lg:col-span-5">
+                            <!-- =========================================================
+                                 PHOTO SLOT 3: Uses IMG_0024.jpg (Working at the optical table)
+                                 ========================================================= -->
+                            <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border-2 border-gtgold/40 shadow-md">
+                                <img id="preview-slot-3" src="IMG_0024.jpg"
+                                     onload="this.style.display='block'; document.getElementById('fallback-slot-3').style.display='none';"
+                                     onerror="tryFallbackImage(this, ['IMG_0024.jpeg', 'img_0024.jpg'], 'fallback-slot-3')"
+                                     class="w-full h-full object-cover" alt="Advik Behera Aligning Optical Table at OSU Photonics Lab">
+                                
+                                <!-- Custom Technical SVG Diagram of Optical True-Time-Delay & IR Detector -->
+                                <div id="fallback-slot-3" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
+                                    <svg class="w-full max-w-[280px] h-32 mb-2" viewBox="0 0 320 120" fill="none">
+                                        <!-- Laser Source -->
+                                        <rect x="10" y="45" width="55" height="30" rx="4" fill="#003057" stroke="#B3A369" stroke-width="2"/>
+                                        <text x="37" y="64" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">IR LASER</text>
+                                        <!-- Optical Path / Delay Loop -->
+                                        <path d="M65 60 L115 60 L135 30 L175 90 L195 60 L235 60" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="4 2"/>
+                                        <circle cx="135" cy="30" r="5" fill="#B3A369"/>
+                                        <circle cx="175" cy="90" r="5" fill="#B3A369"/>
+                                        <text x="155" y="18" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">Optical Delay Path</text>
+                                        <!-- Photodetector + Level Shifter -->
+                                        <rect x="235" y="40" width="75" height="40" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+                                        <text x="272" y="57" fill="#38bdf8" font-size="8" text-anchor="middle" font-family="monospace">IR DETECTOR</text>
+                                        <text x="272" y="70" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="monospace">20nW → 80nW</text>
+                                    </svg>
+                                    <span class="font-bold text-xs text-gtgold font-mono">Optical Alignment &amp; True-Time-Delay Setup (IMG_0024.jpg)</span>
+                                </div>
+
+                                <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                    <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
+                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_0024.jpg</code></span>
+                                    <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-3', 'fallback-slot-3')">
+                                </label>
+                            </div>
+                            <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
+                                <span>Optical alignment &amp; calibration in the OSU Photonics Lab</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specific Technical Contributions Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-10 h-10 rounded-lg bg-gtnavy/10 text-gtnavy flex items-center justify-center font-bold mb-4">01</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Infrared Detector Sensitivity & Diffusion Optics</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Worked directly on improving the sensitivity of an infrared photodetector setup and modifying internal diffusion optics to improve experimental performance. Through systematic hardware adjustments and calibration, the measured detection threshold improved from approximately <strong>20 nW to 80 nW</strong>.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-10 h-10 rounded-lg bg-gtnavy/10 text-gtnavy flex items-center justify-center font-bold mb-4">02</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Level-Shifting & Calibration Setup</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Applied system matrices, polarization control, and precision optical alignment while designing and rebuilding a level-shifting and calibration circuit setup. Gained hands-on experience in electronic signal conditioning and hardware troubleshooting at the interface between optical components and electronic circuits.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-10 h-10 rounded-lg bg-gtnavy/10 text-gtnavy flex items-center justify-center font-bold mb-4">03</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Diagnosing 6-Year-Old Output-Block Failure</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Diagnosed and repaired a six-year-old optical output-block failure in the laboratory system, restoring full experimental functionality and presenting our optical alignment and hardware troubleshooting solutions to OSU and Battelle research collaborators.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 4: TECHNICAL PROJECTS & DISCOVERY PROJECT FEATURE
+             ===================================================================== -->
+        <section id="page-projects" class="page-section hidden fade-in py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Scalable Engineering Portfolio</span>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Technical Projects & Hardware Builds</h1>
+                        <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
+                    </div>
+                    <p class="text-xs font-mono text-slate-500 mt-4 md:mt-0 bg-white px-3.5 py-2 rounded-lg border border-slate-200">
+                        <i class="fas fa-layer-group text-gtgold mr-1.5"></i>Designed to scale across my undergraduate career at GT
+                    </p>
+                </div>
+
+                <div class="space-y-10">
+
+                    <!-- PROJECT 1: HYTECH RACING DASHBOARD UI -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">HYTech Racing • Formula SAE Electric</span>
+                                    <span class="bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded border border-emerald-200">Ongoing Involvement</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900">1. HYTech Racing Dashboard UI Development</h2>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Motivation & Context:</strong> HYTech Racing designs and builds a high-performance electric Formula SAE racecar at Georgia Tech. An intuitive, responsive Dashboard User Interface (UI) is essential for presenting critical vehicle status, telemetry, and operational feedback clearly to the driver and engineering team.
+                                </p>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Technical Approach & My Contributions:</strong> Working with the HYTech Racing software and electrical subteams, I have been contributing to the development of the <strong>Dashboard UI</strong>. Navigating the team's repository and codebase in Visual Studio Code, I have worked on structuring and refining the interface layout and display logic so vehicle data can be visualized cleanly and reliably.
+                                </p>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Dashboard UI</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Visual Studio Code</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git & GitHub</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Telemetry Visualization</span>
+                                </div>
+                            </div>
+
+                            <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI CODE SCREENSHOT -->
+                            <div class="lg:col-span-5">
+                                <!-- =========================================================
+                                     PHOTO SLOT 4: Replace src="dashboard_code.jpg" when ready
+                                     ========================================================= -->
+                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
+                                    <img id="preview-slot-4" src="dashboard_code.jpg" onerror="this.style.display='none'; document.getElementById('fallback-slot-4').style.display='flex';" class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI Code">
+                                    
+                                    <div id="fallback-slot-4" class="w-full h-full flex flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
+                                        <svg class="w-36 h-24 mb-2" viewBox="0 0 200 110" fill="none">
+                                            <rect x="15" y="15" width="170" height="80" rx="6" fill="#0f172a" stroke="#B3A369" stroke-width="2"/>
+                                            <circle cx="28" cy="27" r="3" fill="#ef4444"/>
+                                            <circle cx="38" cy="27" r="3" fill="#eab308"/>
+                                            <circle cx="48" cy="27" r="3" fill="#22c55e"/>
+                                            <text x="100" y="55" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">&lt;DashboardUI /&gt;</text>
+                                            <text x="100" y="72" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">HYTech Telemetry Display</text>
+                                        </svg>
+                                        <span class="font-bold text-xs text-gtgold font-mono">PHOTO SLOT 4: dashboard_code.jpg</span>
+                                        <p class="text-[11px] text-slate-300 mt-1">
+                                            Recommended: Screenshot of your Dashboard UI code or UI preview window (click to test any screenshot here!).
+                                        </p>
+                                    </div>
+
+                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/85 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                        <i class="fas fa-code text-2xl text-gtgold mb-1"></i>
+                                        <span class="font-bold text-xs">Click to Preview Dashboard UI Code Screenshot</span>
+                                        <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-4', 'fallback-slot-4')">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2: ALTIUM DESIGNER PCB & COMPONENT LIBRARIES -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">ECAD & PCB Engineering</span>
+                                    <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded">HYTech Racing Onboarding & Libraries</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900">2. Altium Designer PCB Layout & Component Libraries</h2>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Problem & Engineering Need:</strong> Designing reliable custom printed circuit boards (PCBs) requires accurate schematic symbols, verified IPC footprints, and clean multi-layer trace routing with proper ground pours and design-rule verification.
+                                </p>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Technical Execution:</strong> Working in <strong>Altium Designer</strong> for HYTech Racing, I designed custom schematic symbol libraries (<code class="font-mono text-xs">.SchLib</code>), 2D/3D PCB component footprints (<code class="font-mono text-xs">.PcbLib</code>), and compiled unified <strong>Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>)</strong>. In addition, I completed my custom <strong>Keychain Onboarding PCB Project</strong> (<code class="font-mono text-xs">555_Timer.SchDoc</code> &amp; <code class="font-mono text-xs">PCB1.PcbDoc</code>)—capturing a 555 timer LED circuit schematic, defining a custom board outline, placing SMD components and diodes, and routing top/bottom copper layers with polygon pours.
+                                </p>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                            <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI CODE SCREENSHOT (IMG_2890.heic) -->
+                            <div class="lg:col-span-5">
+                                <!-- =========================================================
+                                     PHOTO SLOT 4: Uses IMG_2890.heic (Dashboard UI)
+                                     ========================================================= -->
+                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
+                                    <img id="preview-slot-4" src="IMG_2890.heic" data-heic-src="IMG_2890.heic"
+                                         onload="this.style.display='block'; document.getElementById('fallback-slot-4').style.display='none';"
+                                         onerror="tryFallbackImage(this, ['IMG_2890.jpg', 'IMG_2890.JPG', 'IMG_2890.jpeg', 'dashboard_code.jpg'], 'fallback-slot-4')"
+                                         class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI IMG_2890.heic">
+                                    
+                                    <div id="fallback-slot-4" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
+                                        <svg class="w-36 h-24 mb-2" viewBox="0 0 200 110" fill="none">
+                                            <rect x="15" y="15" width="170" height="80" rx="6" fill="#0f172a" stroke="#B3A369" stroke-width="2"/>
+                                            <circle cx="28" cy="27" r="3" fill="#ef4444"/>
+                                            <circle cx="38" cy="27" r="3" fill="#eab308"/>
+                                            <circle cx="48" cy="27" r="3" fill="#22c55e"/>
+                                            <text x="100" y="55" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">&lt;DashboardUI /&gt;</text>
+                                            <text x="100" y="72" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">HYTech Telemetry Display</text>
+                                        </svg>
+                                        <span class="font-bold text-xs text-gtgold font-mono">HYTech Dashboard UI (IMG_2890.heic)</span>
+                                        <p class="text-[11px] text-slate-300 mt-1">
+                                            Click to preview <code class="text-gtgold font-mono">IMG_2890.heic</code> or drop it into your GitHub repository folder.
+                                        </p>
+                                    </div>
+
+                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/85 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                        <i class="fas fa-code text-2xl text-gtgold mb-1"></i>
+                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_2890.heic</code></span>
+                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-4', 'fallback-slot-4')">
+                                    </label>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
+                                    <span>HYTech Racing Dashboard UI Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2: ALTIUM DESIGNER PCB & COMPONENT LIBRARIES -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">ECAD & PCB Engineering</span>
+                                    <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded">HYTech Racing Onboarding & Libraries</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900">2. Altium Designer PCB Layout & Component Libraries</h2>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Problem & Engineering Need:</strong> Designing reliable custom printed circuit boards (PCBs) requires accurate schematic symbols, verified IPC footprints, and clean multi-layer trace routing with proper ground pours and design-rule verification.
+                                </p>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Technical Execution:</strong> Working in <strong>Altium Designer</strong> for HYTech Racing, I designed custom schematic symbol libraries (<code class="font-mono text-xs">.SchLib</code>), 2D/3D PCB component footprints (<code class="font-mono text-xs">.PcbLib</code>), and compiled unified <strong>Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>)</strong>. In addition, I completed my custom <strong>Keychain Onboarding PCB Project</strong> (<code class="font-mono text-xs">555_Timer.SchDoc</code> &amp; <code class="font-mono text-xs">PCB1.PcbDoc</code>)—capturing a 555 timer LED circuit schematic, defining a custom board outline, placing SMD components and diodes, and routing top/bottom copper layers with polygon pours.
+                                </p>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Altium Designer</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">555 Timer Custom PCB</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Schematic Symbols (.SchLib)</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">PCB Footprints (.PcbLib)</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Integrated Libraries (.IntLib)</span>
+                                </div>
+                            </div>
+
+                            <!-- PHOTO SLOT 5: ALTIUM DESIGNER PHOTO (IMG_3452.heic) -->
+                            <div class="lg:col-span-5">
+                                <!-- =========================================================
+                                     PHOTO SLOT 5: Uses IMG_3452.heic (Altium PCB layout)
+                                     ========================================================= -->
+                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
+                                    <img id="preview-slot-5" src="IMG_3452.heic" data-heic-src="IMG_3452.heic"
+                                         onload="this.style.display='block'; document.getElementById('fallback-slot-5').style.display='none';"
+                                         onerror="tryFallbackImage(this, ['IMG_3452.jpg', 'IMG_3452.JPG', 'IMG_3452.jpeg', 'IMG_2687.jpg'], 'fallback-slot-5')"
+                                         class="w-full h-full object-cover" alt="Altium Designer PCB Layout IMG_3452.heic">
+                                    
+                                    <div id="fallback-slot-5" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-950 text-white">
+                                        <svg class="w-32 h-24 mb-2" viewBox="0 0 160 110" fill="none">
+                                            <rect x="45" y="25" width="70" height="60" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+                                            <rect x="33" y="33" width="12" height="6" fill="#eab308"/>
+                                            <rect x="33" y="45" width="12" height="6" fill="#eab308"/>
+                                            <rect x="33" y="57" width="12" height="6" fill="#eab308"/>
+                                            <rect x="33" y="69" width="12" height="6" fill="#eab308"/>
+                                            <rect x="115" y="33" width="12" height="6" fill="#eab308"/>
+                                            <rect x="115" y="45" width="12" height="6" fill="#eab308"/>
+                                            <rect x="115" y="57" width="12" height="6" fill="#eab308"/>
+                                            <rect x="115" y="69" width="12" height="6" fill="#eab308"/>
+                                            <circle cx="55" cy="35" r="3" fill="#38bdf8"/>
+                                            <text x="80" y="58" fill="#22c55e" font-size="8" text-anchor="middle" font-family="monospace">555 PCB</text>
+                                        </svg>
+                                        <span class="font-bold text-xs text-gtgold font-mono">Altium Keychain Onboarding PCB (IMG_3452.heic)</span>
+                                    </div>
+
+                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                        <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
+                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3452.heic</code></span>
+                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-5', 'fallback-slot-5')">
+                                    </label>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
+                                    <span>Custom 555 Timer Keychain Onboarding PCB in Altium</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3: TRANSFORMING MECHANICAL PAWN & 3D PROTOTYPING -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">Mechanical Prototyping &amp; Additive Manufacturing</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900">3. Transforming Mechanical Pawn &amp; Precision Tolerance Fitting</h2>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Motivation:</strong> Printing a static 3D model is straightforward, but fabricating a compact multi-part mechanical assembly with sliding joints, internal springs, and locking linkages requires accounting for real-world friction, resin/filament tolerances, and surface roughness.
+                                </p>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    <strong>Process &amp; Post-Processing:</strong> I built and refined a multi-tier <strong>transforming mechanical pawn</strong> assembly using 3D printing and FreeCAD modeling. Because raw printed parts bind along tight sliding interfaces, I performed extensive hands-on mechanical post-processing—precision <strong>sanding, dremeling internal channels, lubricating contact surfaces, and tuning spring tension</strong>—across multiple assembly iterations until the transforming mechanism expanded and locked smoothly.
+                                </p>
+                                <div class="flex flex-wrap gap-2 pt-1">
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">3D Printing &amp; FreeCAD</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Sliding Fits &amp; Clearances</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Dremeling &amp; Sanding</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Lubrication &amp; Assembly</span>
+                                </div>
+                            </div>
+
+                            <!-- PHOTO SLOT 6: TRANSFORMING PAWN PHOTO (IMG_3450.jpg) -->
+                            <div class="lg:col-span-5">
+                                <!-- =========================================================
+                                     PHOTO SLOT 6: Uses IMG_3450.jpg (Transforming Pawn)
+                                     ========================================================= -->
+                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
+                                    <img id="preview-slot-6" src="IMG_3450.jpg"
+                                         onload="this.style.display='block'; document.getElementById('fallback-slot-6').style.display='none';"
+                                         onerror="tryFallbackImage(this, ['IMG_3450.jpeg', 'img_3450.jpg'], 'fallback-slot-6')"
+                                         class="w-full h-full object-cover" alt="3D Printed Transforming Mechanical Pawn IMG_3450.jpg">
+                                    
+                                    <div id="fallback-slot-6" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
+                                        <i class="fas fa-chess-pawn text-4xl text-gtgold mb-2"></i>
+                                        <span class="font-bold text-xs text-gtgold font-mono">Transforming Mechanical Pawn (IMG_3450.jpg)</span>
+                                    </div>
+
+                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
+                                        <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
+                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3450.jpg</code></span>
+                                        <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-6', 'fallback-slot-6')">
+                                    </label>
+                                </div>
+                                <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
+                                    <span>Assembled 3D-printed transforming mechanical pawn</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 4: PYTHON & STREAMLIT DATA APPLICATION -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">CS 1301 • Software & Data Visualization</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-3">4. Interactive Gaming Statistics Web Application (Python & Streamlit)</h2>
+                        <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                            Developed a multi-page interactive web application in <strong>Python</strong> using <strong>Streamlit</strong>, <strong>Pandas</strong>, and <strong>Plotly</strong>. The application integrates API requests, JSON/CSV datasets, and interactive user survey inputs to dynamically filter and visualize gaming performance metrics. Deployed via GitHub and Streamlit Community Cloud, this project strengthened my ability to build clean software interfaces for analyzing and presenting structured data.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Python</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Streamlit</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Pandas & Plotly</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">REST APIs & JSON/CSV</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git & GitHub</span>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 5: REQUIRED ECE 1100 DISCOVERY PROJECT FEATURE -->
+                    <div class="bg-gradient-to-br from-gtnavyalt via-gtnavy to-slate-900 text-white rounded-2xl p-8 sm:p-10 shadow-xl border-2 border-gtgold">
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-white/15 pb-5">
+                            <div>
+                                <span class="bg-gtgold text-gtnavy text-xs font-mono font-extrabold px-3 py-1 rounded uppercase">
+                                    ECE 1100 Discovery Project Feature
+                                </span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Individual Discovery Project Showcase</h2>
+                            </div>
+                            <span class="text-xs font-mono bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-lg text-gtgoldlight">
+                                <i class="fas fa-sync-alt mr-1.5"></i>Structured for Discovery Showcase Update
+                            </span>
+                        </div>
+
+                        <p class="text-slate-200 text-sm leading-relaxed mb-6">
+                            <em>Note for ECE 1100 Reviewers:</em> Per the Published ePortfolio assignment guidelines, this dedicated Discovery Project Feature module is architected with all five required Design Thinking & Showcase sections and will be populated with final testing metrics and prototype photography ahead of the Discovery Project Showcase.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-sm">
+                            <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+                                <h3 class="font-bold text-gtgold mb-2 font-mono text-xs uppercase">1. The Problem</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed">
+                                    Defines the core engineering challenge, user/system constraints, and why solving this problem matters in a practical electrical and computer engineering context.
+                                </p>
+                            </div>
+                            <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+                                <h3 class="font-bold text-gtgold mb-2 font-mono text-xs uppercase">2. The Process</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed">
+                                    Documents initial ideation, schematic/CAD planning, component selection, iterative breadboarding, and the design trade-offs navigated during development.
+                                </p>
+                            </div>
+                            <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+                                <h3 class="font-bold text-gtgold mb-2 font-mono text-xs uppercase">3. Technical Implementation</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed">
+                                    Details the hardware architecture, sensors, circuit design, Altium/3D-printed components, and embedded software used to construct the prototype.
+                                </p>
+                            </div>
+                            <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+                                <h3 class="font-bold text-gtgold mb-2 font-mono text-xs uppercase">4. The Outcome</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed">
+                                    Presents quantitative measurements, functional verification, what worked as predicted, and which edge cases required hardware or firmware adjustments.
+                                </p>
+                            </div>
+                            <div class="bg-white/5 border border-white/15 rounded-xl p-5 md:col-span-2">
+                                <h3 class="font-bold text-gtgold mb-2 font-mono text-xs uppercase">5. Engineering Reflection</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed">
+                                    Synthesizes key lessons learned, how this project connects classroom ECE fundamentals to hands-on system integration, and next steps for future iterations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 5: CAREER GOALS & ECE ROADMAP
+             ===================================================================== -->
+        <section id="page-career" class="page-section hidden fade-in py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl mb-12">
+                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Long-Term Vision & ECE Roadmap</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Career Goals: Engineering Physical Signals</h1>
+                    <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14">
+                    <div class="lg:col-span-8 bg-white rounded-2xl p-8 shadow-sm border border-slate-200 space-y-5 text-slate-700 leading-relaxed">
+                        <h2 class="text-2xl font-bold text-gtnavy">Where I Am Heading as an Electrical Engineer</h2>
+                        <p>
+                            My overarching career goal is to design and build advanced hardware systems that manipulate, detect, and process physical signals—particularly at the intersection of <strong>photonics and optical engineering, RF/phased-array electromagnetics, and electronic circuits</strong>. Rather than locking myself into a narrow job title during my first year, I am intentionally building a broad, rigorous foundation across physical optics and electronic hardware so I can bridge the gap between device physics and complete engineering systems.
+                        </p>
+                        <p>
+                            My research experience with optical true-time-delay systems at The Ohio State University showed me the transformative potential of photonics in high-bandwidth satellite communications and sensing. Simultaneously, my work with HYTech Racing at Georgia Tech—contributing to the vehicle Dashboard UI and designing custom schematic symbols, footprints, and PCB layouts in Altium Designer—has grounded me in the practical realities of reliable electronic hardware and telemetry software. Moving forward, I want to combine these threads: developing systems where high-speed electronics, custom PCBs, and optical or RF components work together seamlessly.
+                        </p>
+                        <p>
+                            <strong>Near-Term Internship &amp; Research Target (Summer 2027):</strong> My primary near-term milestone is securing an undergraduate research position or R&amp;D engineering internship for Summer 2027 focused on photonics, optical communications, or mixed-signal hardware at organizations such as <strong>Corning</strong>, <strong>Analog Devices</strong>, <strong>Battelle</strong>, or a specialized university/national research laboratory.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-gtnavy text-white rounded-2xl p-7 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono uppercase text-gtgold font-bold">Target Technical Domains</span>
+                            <h3 class="text-xl font-bold mt-1 mb-5">Core Career Interests</h3>
+                            <ul class="space-y-4 text-sm">
+                                <li class="border-b border-white/10 pb-3">
+                                    <strong class="text-gtgold block">Photonics & Optical Systems</strong>
+                                    <span class="text-xs text-slate-300">Optical communications, true-time-delay beamforming, photonic devices, and optical sensing.</span>
+                                </li>
+                                <li class="border-b border-white/10 pb-3">
+                                    <strong class="text-gtgold block">RF & Phased-Array Antennas</strong>
+                                    <span class="text-xs text-slate-300">Microwave engineering, reconfigurable antennas, and electromagnetic signal control.</span>
+                                </li>
+                                <li>
+                                    <strong class="text-gtgold block">Electronics & Embedded Hardware</strong>
+                                    <span class="text-xs text-slate-300">Custom PCB layout, analog/digital signal conditioning, and sensor instrumentation.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/15 text-xs font-mono text-slate-300">
+                            Target Organizations: Corning • Analog Devices • Battelle • Optical/RF Research Labs
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Step-by-Step Roadmap ("From Here to There") -->
+                <h3 class="text-xl font-extrabold text-slate-900 mb-6">How I Will Get From Here to There: My Georgia Tech ECE Roadmap</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border-t-4 border-gtnavy shadow-sm">
+                        <span class="text-xs font-mono font-bold text-gtnavy uppercase">Phase 1 • Years 1–2</span>
+                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Core Theory &amp; Hands-On Onboarding</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Master Multivariable Calculus, Differential Equations, Circuit Analysis, and Signals &amp; Systems. Deepen my contributions within HYTech Racing by progressing from Dashboard UI development and Altium component libraries to full custom vehicle PCB schematic capture and layout.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border-t-4 border-gtgold shadow-sm">
+                        <span class="text-xs font-mono font-bold text-gtgoldhover uppercase">Phase 2 • Years 2–3</span>
+                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Undergraduate Research & Internships</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Pursue Electromagnetics, Semiconductor Devices, and Optical Engineering coursework at Georgia Tech. Engage in undergraduate photonics/RF research (such as VIP or faculty labs through the Nanotechnology & Photonics Society) and complete a Summer 2027 technical internship at Corning, Analog Devices, or Battelle.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border-t-4 border-emerald-600 shadow-sm">
+                        <span class="text-xs font-mono font-bold text-emerald-700 uppercase">Phase 3 • Years 3–4 & Beyond</span>
+                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Advanced Specialization & Capstone</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Take senior-level electives in optical systems, microwave circuits, and embedded hardware integration. Lead complex subsystem designs and transition into advanced R&D engineering or graduate research in photonics and electromagnetic systems.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 6: RESUME & CONTACT
+             ===================================================================== -->
+        <section id="page-resume" class="page-section hidden fade-in py-14">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Curriculum Vitae &amp; Networking</span>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Resume &amp; Contact Information</h1>
+                        <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-4 md:mt-0 print:hidden">
+                        <!-- =========================================================
+                             RESUME PDF LINK: Checks Advik_Behera_Resume.pdf or Resume: Advik Behera.pdf
+                             ========================================================= -->
+                        <a href="Advik_Behera_Resume.pdf" download="Advik_Behera_Resume.pdf" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2">
+                            <i class="fas fa-download text-gtgold"></i> Download PDF Resume
+                        </a>
+                        <button onclick="window.print()" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                            <i class="fas fa-print"></i> Save / Print Resume
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    
+                    <!-- Formatted 1-Page ECE Career Fair Resume View (Exact Match to Uploaded PDF) -->
+                    <div class="lg:col-span-8 bg-white rounded-2xl p-8 sm:p-10 shadow-md border border-slate-200">
+                        <div class="border-b-2 border-gtnavy pb-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-gtnavy tracking-tight">ADVIK BEHERA</h2>
+                                <p class="text-sm font-semibold text-slate-600 mt-0.5">B.S. in Electrical Engineering • Georgia Institute of Technology</p>
+                            </div>
+                            <div class="text-xs text-slate-600 font-mono space-y-1 sm:text-right">
+                                <div><i class="fas fa-envelope text-gtgold mr-1"></i>abehera@gatech.edu</div>
+                                <div><i class="fas fa-map-marker-alt text-gtgold mr-1"></i>Atlanta, GA • Expected May 2030</div>
+                            </div>
+                        </div>
+
+                        <!-- Resume: Objective -->
+                        <div class="mb-5">
+                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-2">Objective</h3>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Electrical Engineering student at Georgia Tech seeking a Summer 2027 internship in photonics, optical systems, or related engineering fields. Research experience in optical true-time-delay systems, experimental optics, and photonic signal control.
+                            </p>
+                        </div>
+
+                        <!-- Resume: Education -->
+                        <div class="mb-6">
+                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Education</h3>
+                            <div class="space-y-3 text-xs sm:text-sm">
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Georgia Institute of Technology | Atlanta, GA</span>
+                                        <span class="font-mono text-xs text-gtnavy">Expected May 2030</span>
+                                    </div>
+                                    <p class="text-slate-700">Bachelor of Science in Electrical Engineering</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Dublin Jerome High School | Dublin, OH</span>
+                                        <span class="font-mono text-xs text-slate-600">Aug 2022 – May 2026</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600">High School Diploma • GPA: 4.53 • Class Rank: 13/497 • ACT: 36</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>The Ohio State University | Columbus, OH</span>
+                                        <span class="font-mono text-xs text-slate-600">Aug 2024 – Jan 2026</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600">Dual Enrollment Coursework • GPA: 3.925</p>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Columbus State Community College | Columbus, OH</span>
+                                        <span class="font-mono text-xs text-slate-600">May 2024 – Aug 2026</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600">Dual Enrollment Coursework • GPA: 4.0</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume: Skills -->
+                        <div class="mb-6">
+                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Skills</h3>
+                            <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                                <div><strong>Engineering:</strong> Optical Systems, Photonics, Experimental Optics, System Matrices, Polarization Control, PCB Layout &amp; Component Libraries</div>
+                                <div><strong>Laboratory:</strong> Infrared Cameras, Microscopy, Optical Alignment, Experimental Calibration, 3D Printing &amp; Mechanical Post-Processing</div>
+                                <div><strong>Software/Tools:</strong> Altium Designer, FreeCAD, Visual Studio Code, Python (Streamlit, Pandas, Plotly), Git/GitHub, Google Sheets</div>
+                            </div>
+                        </div>
+
+                        <!-- Resume: Experience -->
+                        <div class="mb-6">
+                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Experience</h3>
+                            <div class="space-y-4 text-xs sm:text-sm">
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>The Ohio State University | Columbus, OH</span>
+                                        <span class="font-mono text-xs text-gtnavy">2024 – 2026</span>
+                                    </div>
+                                    <p class="text-xs italic text-slate-600 mb-1">Photonics Research Associate</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+                                        <li>Conducted research on optical true-time-delay systems for phased-array applications, collaborating with the OSU ECE Associate Chair of Instruction and Battelle Memorial Institute researchers.</li>
+                                        <li>Applied system matrices, polarization control, and optical alignment while designing and building a level-shifting/calibration setup and modifying internal diffusion optics to improve experimental performance (improving IR detector thresholds from ~20 nW to 80 nW).</li>
+                                        <li>Diagnosed and repaired a six-year-old optical output-block failure, restoring functionality and presenting alignment and troubleshooting solutions to research collaborators.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>HYTech Racing — Georgia Tech Formula SAE Electric | Atlanta, GA</span>
+                                        <span class="font-mono text-xs text-gtnavy">2026 – Present</span>
+                                    </div>
+                                    <p class="text-xs italic text-slate-600 mb-1">Team Member — Dashboard UI &amp; Altium PCB Design</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+                                        <li>Contributing to the vehicle Dashboard UI software and interface display architecture.</li>
+                                        <li>Designing custom schematic symbols (<code class="font-mono">.SchLib</code>), PCB footprints (<code class="font-mono">.PcbLib</code>), Integrated Libraries (<code class="font-mono">.IntLib</code>), and custom onboarding PCBs in Altium Designer.</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between font-bold text-slate-900">
+                                        <span>Dublin Jerome High School | Dublin, OH</span>
+                                        <span class="font-mono text-xs text-gtnavy">2024 – 2026</span>
+                                    </div>
+                                    <p class="text-xs italic text-slate-600 mb-1">President, Student Council</p>
+                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
+                                        <li>Led a 40-member student council, organizing school-wide initiatives including the annual Club Fair for 50+ clubs and 1,500 students.</li>
+                                        <li>Directed fundraising events that raised $2,000 and coordinated the district's Santa Phones initiative supporting 80 teachers and their families.</li>
+                                        <li>Evaluated 100+ leadership applications and held weekly planning to maintain an accountable, collaborative team.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume: Leadership or Activities -->
+                        <div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Leadership &amp; Activities</h3>
+                            <ul class="list-disc list-inside text-xs text-slate-700 space-y-1.5">
+                                <li><strong>Model United Nations | Officer (2024–2026):</strong> Mentored 60+ members in committee strategy, negotiation, and resolution drafting. Won Best Delegate at MUNUM 2026, Outstanding Delegate at MUNUM 2025, and Best Delegate at OSUMUN 2024.</li>
+                                <li><strong>Dublin Jerome Hindu Club | President (2024–2026):</strong> Grew membership from zero to 40+ active members and coordinated cultural events involving 1,000+ students.</li>
+                                <li><strong>Volleyball | Varsity &amp; Club Player (2020–2026):</strong> AAU Boys Volleyball National Champion (15U); Steel City Tournament Champion (16U); Second-Team All-Region/All-Conference; Georgia Tech Men's Club Volleyball.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Contact & Highlights -->
+                    <div class="lg:col-span-4 space-y-6 print:hidden">
+                        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 space-y-5">
+                            <h3 class="text-lg font-bold text-gtnavy flex items-center gap-2">
+                                <i class="fas fa-paper-plane text-gtgold"></i> Connect With Me
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                I am always excited to connect with faculty, researchers, fellow engineers, and recruiters working in photonics, optical systems, RF, and electronics.
+                            </p>
+
+                            <div class="space-y-3 text-xs">
+                                <a href="mailto:abehera@gatech.edu" class="p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center gap-3 transition">
+                                    <div class="w-9 h-9 rounded-lg bg-gtnavy text-gtgold flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block font-mono text-[10px] uppercase">Georgia Tech Email</span>
+                                        <span class="font-bold text-gtnavy underline">abehera@gatech.edu</span>
+                                    </div>
+                                </a>
+
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-gtnavy text-gtgold flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block font-mono text-[10px] uppercase">Institution</span>
+                                        <span class="font-bold text-slate-800">Georgia Institute of Technology (ECE)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gtnavy text-white rounded-2xl p-6 text-xs space-y-3 shadow-sm">
+                            <div class="font-bold flex items-center gap-2 text-sm text-gtgold font-mono uppercase">
+                                <i class="fas fa-microchip"></i> Summer 2027 Availability
+                            </div>
+                            <p class="text-slate-200 leading-relaxed">
+                                Actively seeking Summer 2027 undergraduate internships and research opportunities in photonics, optical communications, RF/phased-array engineering, and hardware development.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         MODAL: STEP-BY-STEP PHOTO & GITHUB PAGES PUBLISHING GUIDE
+         ===================================================================== -->
+    <div id="guide-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border-2 border-gtgold space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div>
+                    <span class="text-xs font-mono uppercase text-gtnavy font-bold">Quick Deployment Manual</span>
+                    <h3 class="text-xl font-extrabold text-slate-900">Your Uploaded Files & GitHub Pages Checklist</h3>
+                </div>
+                <button onclick="toggleGuideModal()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-images text-gtgold mr-1.5"></i>1. Your Exact Photo & Resume Filenames</h4>
+                    <p>
+                        I have updated the HTML code so that it looks for the <strong>exact filenames</strong> you specified (including automatic browser conversion for <code class="font-mono">.heic</code> photos). When you upload <code class="font-mono font-bold">index.html</code> to your GitHub repository, just drag and drop these exact files into the same folder:
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mt-2 font-mono text-xs bg-white p-3 rounded-lg border border-slate-200">
+                        <li>• <strong class="text-gtnavy">IMG_4953.heic</strong> (Home Portrait)</li>
+                        <li>• <strong class="text-gtnavy">IMG_9886.jpg</strong> (Volleyball Action)</li>
+                        <li>• <strong class="text-gtnavy">IMG_0024.jpg</strong> (OSU Photonics Lab)</li>
+                        <li>• <strong class="text-gtnavy">IMG_2890.heic</strong> (Dashboard UI)</li>
+                        <li>• <strong class="text-gtnavy">IMG_3452.heic</strong> (Altium PCB Layout)</li>
+                        <li>• <strong class="text-gtnavy">IMG_3450.jpg</strong> (Transforming Pawn)</li>
+                        <li class="sm:col-span-2">• <strong class="text-gtnavy">Advik_Behera_Resume.pdf</strong> (Your PDF Resume)</li>
+                    </ul>
+                    <p class="mt-2 text-xs text-slate-500">
+                        <em>Tip:</em> Because the live preview editor here doesn't store local image files on a server, you can click any photo box right now and select your photo from your computer to see it live in the preview! Once you upload the files to GitHub, they will load automatically for everyone on the internet.
+                    </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-globe text-gtgold mr-1.5"></i>2. How to Publish Live on GitHub Pages in 2 Minutes (100% Free)</h4>
+                    <ol class="list-decimal list-inside space-y-1.5 mt-2">
+                        <li>Download/save this file and rename it to <code class="font-mono font-bold text-gtnavy bg-slate-200 px-1.5 py-0.5 rounded">index.html</code>.</li>
+                        <li>Log into your <strong>GitHub</strong> account and click <strong>New Repository</strong>.</li>
+                        <li>Name the repository <code class="font-mono font-bold text-gtnavy">eportfolio</code>, make sure it is set to <strong>Public</strong>, and click <strong>Create repository</strong>.</li>
+                        <li>Click <strong>uploading an existing file</strong> and drag-and-drop your <code class="font-mono font-bold">index.html</code> file + your photos (<code class="font-mono">headshot.jpg</code>, etc.) + <code class="font-mono">Advik_Behera_Resume.pdf</code>, then click <strong>Commit changes</strong>.</li>
+                        <li>In your repository, click <strong>Settings</strong> (top tab) → <strong>Pages</strong> (left sidebar).</li>
+                        <li>Under <strong>Branch</strong>, change "None" to <strong>main</strong> and click <strong>Save</strong>.</li>
+                        <li>Wait 60 seconds and refresh! GitHub will give you your public link: <code class="font-mono text-gtnavy font-bold">https://[your-username].github.io/eportfolio/</code>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleGuideModal()" class="bg-gtnavy text-white font-bold px-6 py-2.5 rounded-xl text-xs">
+                    Got It, Close Guide
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gtnavyalt text-white border-t-2 border-gtgold mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded bg-gtgold text-gtnavy font-extrabold text-xs flex items-center justify-center">AB</span>
+                        <span class="font-bold text-base tracking-tight">Advik Behera • Engineering ePortfolio</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Bachelor of Science in Electrical Engineering • Georgia Institute of Technology • Class of 2030
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <button onclick="switchTab('home')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Home</button>
+                    <button onclick="switchTab('about')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">About</button>
+                    <button onclick="switchTab('research')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Photonics Research</button>
+                    <button onclick="switchTab('projects')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Projects</button>
+                    <button onclick="switchTab('career')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Career Goals</button>
+                    <button onclick="switchTab('resume')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Resume</button>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <span>&copy; 2026 Advik Behera. Built for Georgia Tech ECE 1100 & Professional Engineering Branding.</span>
+                <button onclick="toggleGuideModal()" class="text-gtgold hover:underline font-mono text-[11px]">
+                    <i class="fas fa-info-circle mr-1"></i>Open Photo & GitHub Pages Guide
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation & Image Preview Script -->
+    <script>
+        async function tryDecodeHeicUrl(imgEl, heicUrl) {
+            if (typeof heic2any === 'undefined') return false;
+            try {
+                const response = await fetch(heicUrl);
+                if (!response.ok) return false;
+                const blob = await response.blob();
+                const convertedBlob = await heic2any({ blob: blob, toType: 'image/jpeg', quality: 0.9 });
+                const finalBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+                imgEl.src = URL.createObjectURL(finalBlob);
+                imgEl.style.display = 'block';
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async function tryFallbackImage(imgEl, altList, fallbackId) {
+            // First attempt automatic HEIC decoding if this image has a .heic source and hasn't tried decoding yet
+            const heicSrc = imgEl.getAttribute('data-heic-src');
+            if (heicSrc && !imgEl.getAttribute('data-heic-tried')) {
+                imgEl.setAttribute('data-heic-tried', 'true');
+                const decoded = await tryDecodeHeicUrl(imgEl, heicSrc);
+                if (decoded) {
+                    const fb = document.getElementById(fallbackId);
+                    if (fb) fb.style.display = 'none';
+                    return;
+                }
+            }
+
+            const currentAttempt = parseInt(imgEl.getAttribute('data-attempt') || '0', 10);
+            if (currentAttempt < altList.length) {
+                imgEl.setAttribute('data-attempt', (currentAttempt + 1).toString());
+                imgEl.src = altList[currentAttempt];
+            } else {
+                imgEl.style.display = 'none';
+                const fb = document.getElementById(fallbackId);
+                if (fb) {
+                    fb.classList.remove('hidden');
+                    fb.style.display = 'flex';
+                }
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById('page-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-gtnavy', 'shadow-sm', 'font-bold');
+                btn.classList.add('text-slate-600', 'font-semibold');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600', 'font-semibold');
+                activeBtn.classList.add('bg-white', 'text-gtnavy', 'shadow-sm', 'font-bold');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            icon.className = menu.classList.contains('hidden') ? 'fas fa-bars text-lg' : 'fas fa-times text-lg';
+        }
+
+        function toggleGuideModal() {
+            const modal = document.getElementById('guide-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        async function previewImage(event, imgId, fallbackId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const imgEl = document.getElementById(imgId);
+            const fallbackEl = document.getElementById(fallbackId);
+
+            // Support local preview of .heic files directly in browser
+            if (file.name.toLowerCase().endsWith('.heic') && typeof heic2any !== 'undefined') {
+                try {
+                    const convertedBlob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 });
+                    const finalBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+                    if (imgEl && fallbackEl) {
+                        imgEl.src = URL.createObjectURL(finalBlob);
+                        imgEl.style.display = 'block';
+                        fallbackEl.style.display = 'none';
+                    }
+                    return;
+                } catch (e) {
+                    console.warn('HEIC preview conversion failed, falling back to FileReader.');
+                }
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (imgEl && fallbackEl) {
+                    imgEl.src = e.target.result;
+                    imgEl.style.display = 'block';
+                    fallbackEl.style.display = 'none';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

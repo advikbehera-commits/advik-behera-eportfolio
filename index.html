@@ -167,12 +167,12 @@
                         <div class="lg:col-span-5">
                             <div class="bg-slate-900/90 border-2 border-gtgold/50 rounded-2xl p-4 shadow-2xl">
                                 <!-- =========================================================
-                                     PHOTO SLOT 1: Checks IMG_4953.heic (with JPG/JPEG & BuzzPic fallbacks)
+                                     PHOTO SLOT 1: Checks IMG_4953.jpeg / .jpg first
                                      ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-800 aspect-[4/3] flex flex-col items-center justify-center border border-slate-700">
-                                    <img id="preview-slot-1" src="IMG_4953.heic" data-heic-src="IMG_4953.heic"
+                                    <img id="preview-slot-1" src="IMG_4953.jpeg" data-heic-src="IMG_4953.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-1').style.display='none';"
-                                         onerror="tryFallbackImage(this, ['IMG_4953.jpg', 'IMG_4953.JPG', 'IMG_4953.jpeg', 'BuzzPic.jpeg', 'Buzzpic.jpg'], 'fallback-slot-1')"
+                                         onerror="tryFallbackImage(this, ['IMG_4953.jpg', 'IMG_4953.JPEG', 'IMG_4953.JPG', 'IMG_4953.heic', 'IMG_4953.HEIC', 'BuzzPic.jpeg', 'Buzzpic.jpg'], 'fallback-slot-1')"
                                          class="w-full h-full object-cover object-top bg-white" alt="Advik Behera Portrait">
                                     
                                     <!-- Default Technical Graphic Fallback -->
@@ -310,29 +310,29 @@
                     <!-- Right Column: Photo Slot 2 + Education & Involvement Cards -->
                     <div class="lg:col-span-5 space-y-6">
                         
-                        <!-- PHOTO SLOT 2: VOLLEYBALL ACTION PHOTO (IMG_9886.jpg) -->
+                        <!-- PHOTO SLOT 2: VOLLEYBALL ACTION PHOTO (IMG_9886.jpeg / .jpg) -->
                         <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
                             <!-- =========================================================
-                                 PHOTO SLOT 2: Uses IMG_9886.jpg (Volleyball action shot)
+                                 PHOTO SLOT 2: Uses IMG_9886.jpeg / IMG_9886.jpg (Volleyball action shot)
                                  ========================================================= -->
                             <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/5] flex flex-col items-center justify-center border border-slate-200">
-                                <img id="preview-slot-2" src="IMG_9886.jpg"
+                                <img id="preview-slot-2" src="IMG_9886.jpeg" data-heic-src="IMG_9886.heic"
                                      onload="this.style.display='block'; document.getElementById('fallback-slot-2').style.display='none';"
-                                     onerror="tryFallbackImage(this, ['IMG_9886.jpeg', 'img_9886.jpg'], 'fallback-slot-2')"
+                                     onerror="tryFallbackImage(this, ['IMG_9886.jpg', 'IMG_9886.JPG', 'IMG_9886.JPEG', 'img_9886.jpg', 'img_9886.jpeg', 'IMG_9886.heic'], 'fallback-slot-2')"
                                      class="w-full h-full object-cover" alt="Advik Behera Volleyball Action Shot">
                                 
                                 <div id="fallback-slot-2" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-gtnavy to-slate-800 text-white">
                                     <i class="fas fa-volleyball-ball text-3xl text-gtgold mb-2"></i>
                                     <span class="font-bold text-sm">Competitive Volleyball Action Shot</span>
-                                    <span class="text-[11px] font-mono text-gtgold mt-0.5">IMG_9886.jpg</span>
+                                    <span class="text-[11px] font-mono text-gtgold mt-0.5">IMG_9886.jpeg / IMG_9886.jpg</span>
                                     <p class="text-xs text-slate-300 mt-2">
-                                        Click to preview <code class="text-gtgold font-mono">IMG_9886.jpg</code> or include it in your GitHub repository.
+                                        Click to preview <code class="text-gtgold font-mono">IMG_9886.jpeg</code> or include it in your GitHub repository.
                                     </p>
                                 </div>
 
                                 <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
                                     <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_9886.jpg</code></span>
+                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_9886.jpeg</code></span>
                                     <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-2', 'fallback-slot-2')">
                                 </label>
                             </div>
@@ -422,15 +422,15 @@
                             </p>
                         </div>
 
-                        <!-- PHOTO SLOT 3: OPTICS LAB PHOTO (IMG_0024.jpg) -->
+                        <!-- PHOTO SLOT 3: OPTICS LAB PHOTO (IMG_0024.jpg / .jpeg) -->
                         <div class="lg:col-span-5">
                             <!-- =========================================================
-                                 PHOTO SLOT 3: Uses IMG_0024.jpg (Working at the optical table)
+                                 PHOTO SLOT 3: Uses IMG_0024.jpg / IMG_0024.jpeg (Working at the optical table)
                                  ========================================================= -->
                             <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border-2 border-gtgold/40 shadow-md">
-                                <img id="preview-slot-3" src="IMG_0024.jpg"
+                                <img id="preview-slot-3" src="IMG_0024.jpg" data-heic-src="IMG_0024.heic"
                                      onload="this.style.display='block'; document.getElementById('fallback-slot-3').style.display='none';"
-                                     onerror="tryFallbackImage(this, ['IMG_0024.jpeg', 'img_0024.jpg'], 'fallback-slot-3')"
+                                     onerror="tryFallbackImage(this, ['IMG_0024.jpeg', 'IMG_0024.JPG', 'IMG_0024.JPEG', 'img_0024.jpg', 'img_0024.jpeg'], 'fallback-slot-3')"
                                      class="w-full h-full object-cover" alt="Advik Behera Aligning Optical Table at OSU Photonics Lab">
                                 
                                 <!-- Custom Technical SVG Diagram of Optical True-Time-Delay & IR Detector -->
@@ -532,70 +532,21 @@
                                 <div class="flex flex-wrap gap-2 pt-1">
                                     <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Dashboard UI</span>
                                     <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Visual Studio Code</span>
-                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git & GitHub</span>
+                                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git &amp; GitHub</span>
                                     <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Telemetry Visualization</span>
                                 </div>
                             </div>
 
-                            <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI CODE SCREENSHOT -->
+                            <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI SCREENSHOT (IMG_2890.jpeg / .jpg) -->
                             <div class="lg:col-span-5">
                                 <!-- =========================================================
-                                     PHOTO SLOT 4: Replace src="dashboard_code.jpg" when ready
+                                     PHOTO SLOT 4: Uses IMG_2890.jpeg / IMG_2890.jpg (Dashboard UI)
                                      ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
-                                    <img id="preview-slot-4" src="dashboard_code.jpg" onerror="this.style.display='none'; document.getElementById('fallback-slot-4').style.display='flex';" class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI Code">
-                                    
-                                    <div id="fallback-slot-4" class="w-full h-full flex flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
-                                        <svg class="w-36 h-24 mb-2" viewBox="0 0 200 110" fill="none">
-                                            <rect x="15" y="15" width="170" height="80" rx="6" fill="#0f172a" stroke="#B3A369" stroke-width="2"/>
-                                            <circle cx="28" cy="27" r="3" fill="#ef4444"/>
-                                            <circle cx="38" cy="27" r="3" fill="#eab308"/>
-                                            <circle cx="48" cy="27" r="3" fill="#22c55e"/>
-                                            <text x="100" y="55" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">&lt;DashboardUI /&gt;</text>
-                                            <text x="100" y="72" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">HYTech Telemetry Display</text>
-                                        </svg>
-                                        <span class="font-bold text-xs text-gtgold font-mono">PHOTO SLOT 4: dashboard_code.jpg</span>
-                                        <p class="text-[11px] text-slate-300 mt-1">
-                                            Recommended: Screenshot of your Dashboard UI code or UI preview window (click to test any screenshot here!).
-                                        </p>
-                                    </div>
-
-                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/85 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                        <i class="fas fa-code text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview Dashboard UI Code Screenshot</span>
-                                        <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-4', 'fallback-slot-4')">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PROJECT 2: ALTIUM DESIGNER PCB & COMPONENT LIBRARIES -->
-                    <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                            <div class="lg:col-span-7 space-y-4">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">ECAD & PCB Engineering</span>
-                                    <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded">HYTech Racing Onboarding & Libraries</span>
-                                </div>
-                                <h2 class="text-2xl font-bold text-slate-900">2. Altium Designer PCB Layout & Component Libraries</h2>
-                                <p class="text-slate-700 text-sm leading-relaxed">
-                                    <strong>Problem & Engineering Need:</strong> Designing reliable custom printed circuit boards (PCBs) requires accurate schematic symbols, verified IPC footprints, and clean multi-layer trace routing with proper ground pours and design-rule verification.
-                                </p>
-                                <p class="text-slate-700 text-sm leading-relaxed">
-                                    <strong>Technical Execution:</strong> Working in <strong>Altium Designer</strong> for HYTech Racing, I designed custom schematic symbol libraries (<code class="font-mono text-xs">.SchLib</code>), 2D/3D PCB component footprints (<code class="font-mono text-xs">.PcbLib</code>), and compiled unified <strong>Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>)</strong>. In addition, I completed my custom <strong>Keychain Onboarding PCB Project</strong> (<code class="font-mono text-xs">555_Timer.SchDoc</code> &amp; <code class="font-mono text-xs">PCB1.PcbDoc</code>)—capturing a 555 timer LED circuit schematic, defining a custom board outline, placing SMD components and diodes, and routing top/bottom copper layers with polygon pours.
-                                </p>
-                                <div class="flex flex-wrap gap-2 pt-1">
-                            <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI CODE SCREENSHOT (IMG_2890.heic) -->
-                            <div class="lg:col-span-5">
-                                <!-- =========================================================
-                                     PHOTO SLOT 4: Uses IMG_2890.heic (Dashboard UI)
-                                     ========================================================= -->
-                                <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
-                                    <img id="preview-slot-4" src="IMG_2890.heic" data-heic-src="IMG_2890.heic"
+                                    <img id="preview-slot-4" src="IMG_2890.jpeg" data-heic-src="IMG_2890.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-4').style.display='none';"
-                                         onerror="tryFallbackImage(this, ['IMG_2890.jpg', 'IMG_2890.JPG', 'IMG_2890.jpeg', 'dashboard_code.jpg'], 'fallback-slot-4')"
-                                         class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI IMG_2890.heic">
+                                         onerror="tryFallbackImage(this, ['IMG_2890.jpg', 'IMG_2890.JPEG', 'IMG_2890.JPG', 'img_2890.jpeg', 'img_2890.jpg', 'IMG_2890.heic', 'dashboard_code.jpg'], 'fallback-slot-4')"
+                                         class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI IMG_2890.jpeg">
                                     
                                     <div id="fallback-slot-4" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
                                         <svg class="w-36 h-24 mb-2" viewBox="0 0 200 110" fill="none">
@@ -606,15 +557,15 @@
                                             <text x="100" y="55" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">&lt;DashboardUI /&gt;</text>
                                             <text x="100" y="72" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">HYTech Telemetry Display</text>
                                         </svg>
-                                        <span class="font-bold text-xs text-gtgold font-mono">HYTech Dashboard UI (IMG_2890.heic)</span>
+                                        <span class="font-bold text-xs text-gtgold font-mono">HYTech Dashboard UI (IMG_2890.jpeg)</span>
                                         <p class="text-[11px] text-slate-300 mt-1">
-                                            Click to preview <code class="text-gtgold font-mono">IMG_2890.heic</code> or drop it into your GitHub repository folder.
+                                            Click to preview <code class="text-gtgold font-mono">IMG_2890.jpeg</code> or drop it into your GitHub repository folder.
                                         </p>
                                     </div>
 
                                     <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/85 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
                                         <i class="fas fa-code text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_2890.heic</code></span>
+                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_2890.jpeg</code></span>
                                         <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-4', 'fallback-slot-4')">
                                     </label>
                                 </div>
@@ -630,12 +581,12 @@
                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                             <div class="lg:col-span-7 space-y-4">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">ECAD & PCB Engineering</span>
-                                    <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded">HYTech Racing Onboarding & Libraries</span>
+                                    <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">ECAD &amp; PCB Engineering</span>
+                                    <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1 rounded">HYTech Racing Onboarding &amp; Libraries</span>
                                 </div>
-                                <h2 class="text-2xl font-bold text-slate-900">2. Altium Designer PCB Layout & Component Libraries</h2>
+                                <h2 class="text-2xl font-bold text-slate-900">2. Altium Designer PCB Layout &amp; Component Libraries</h2>
                                 <p class="text-slate-700 text-sm leading-relaxed">
-                                    <strong>Problem & Engineering Need:</strong> Designing reliable custom printed circuit boards (PCBs) requires accurate schematic symbols, verified IPC footprints, and clean multi-layer trace routing with proper ground pours and design-rule verification.
+                                    <strong>Problem &amp; Engineering Need:</strong> Designing reliable custom printed circuit boards (PCBs) requires accurate schematic symbols, verified IPC footprints, and clean multi-layer trace routing with proper ground pours and design-rule verification.
                                 </p>
                                 <p class="text-slate-700 text-sm leading-relaxed">
                                     <strong>Technical Execution:</strong> Working in <strong>Altium Designer</strong> for HYTech Racing, I designed custom schematic symbol libraries (<code class="font-mono text-xs">.SchLib</code>), 2D/3D PCB component footprints (<code class="font-mono text-xs">.PcbLib</code>), and compiled unified <strong>Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>)</strong>. In addition, I completed my custom <strong>Keychain Onboarding PCB Project</strong> (<code class="font-mono text-xs">555_Timer.SchDoc</code> &amp; <code class="font-mono text-xs">PCB1.PcbDoc</code>)—capturing a 555 timer LED circuit schematic, defining a custom board outline, placing SMD components and diodes, and routing top/bottom copper layers with polygon pours.
@@ -649,16 +600,16 @@
                                 </div>
                             </div>
 
-                            <!-- PHOTO SLOT 5: ALTIUM DESIGNER PHOTO (IMG_3452.heic) -->
+                            <!-- PHOTO SLOT 5: ALTIUM DESIGNER PHOTO (IMG_3452.jpeg / .jpg) -->
                             <div class="lg:col-span-5">
                                 <!-- =========================================================
-                                     PHOTO SLOT 5: Uses IMG_3452.heic (Altium PCB layout)
+                                     PHOTO SLOT 5: Uses IMG_3452.jpeg / IMG_3452.jpg (Altium PCB layout)
                                      ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
-                                    <img id="preview-slot-5" src="IMG_3452.heic" data-heic-src="IMG_3452.heic"
+                                    <img id="preview-slot-5" src="IMG_3452.jpeg" data-heic-src="IMG_3452.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-5').style.display='none';"
-                                         onerror="tryFallbackImage(this, ['IMG_3452.jpg', 'IMG_3452.JPG', 'IMG_3452.jpeg', 'IMG_2687.jpg'], 'fallback-slot-5')"
-                                         class="w-full h-full object-cover" alt="Altium Designer PCB Layout IMG_3452.heic">
+                                         onerror="tryFallbackImage(this, ['IMG_3452.jpg', 'IMG_3452.JPEG', 'IMG_3452.JPG', 'img_3452.jpeg', 'img_3452.jpg', 'IMG_3452.heic', 'IMG_2687.jpg', 'IMG_2687.jpeg'], 'fallback-slot-5')"
+                                         class="w-full h-full object-cover" alt="Altium Designer PCB Layout IMG_3452.jpeg">
                                     
                                     <div id="fallback-slot-5" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-950 text-white">
                                         <svg class="w-32 h-24 mb-2" viewBox="0 0 160 110" fill="none">
@@ -674,12 +625,12 @@
                                             <circle cx="55" cy="35" r="3" fill="#38bdf8"/>
                                             <text x="80" y="58" fill="#22c55e" font-size="8" text-anchor="middle" font-family="monospace">555 PCB</text>
                                         </svg>
-                                        <span class="font-bold text-xs text-gtgold font-mono">Altium Keychain Onboarding PCB (IMG_3452.heic)</span>
+                                        <span class="font-bold text-xs text-gtgold font-mono">Altium Keychain Onboarding PCB (IMG_3452.jpeg)</span>
                                     </div>
 
                                     <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
                                         <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3452.heic</code></span>
+                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3452.jpeg</code></span>
                                         <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-5', 'fallback-slot-5')">
                                     </label>
                                 </div>
@@ -712,15 +663,15 @@
                                 </div>
                             </div>
 
-                            <!-- PHOTO SLOT 6: TRANSFORMING PAWN PHOTO (IMG_3450.jpg) -->
+                            <!-- PHOTO SLOT 6: TRANSFORMING PAWN PHOTO (IMG_3450.jpg / .jpeg) -->
                             <div class="lg:col-span-5">
                                 <!-- =========================================================
-                                     PHOTO SLOT 6: Uses IMG_3450.jpg (Transforming Pawn)
+                                     PHOTO SLOT 6: Uses IMG_3450.jpg / IMG_3450.jpeg (Transforming Pawn)
                                      ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
-                                    <img id="preview-slot-6" src="IMG_3450.jpg"
+                                    <img id="preview-slot-6" src="IMG_3450.jpg" data-heic-src="IMG_3450.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-6').style.display='none';"
-                                         onerror="tryFallbackImage(this, ['IMG_3450.jpeg', 'img_3450.jpg'], 'fallback-slot-6')"
+                                         onerror="tryFallbackImage(this, ['IMG_3450.jpeg', 'IMG_3450.JPG', 'IMG_3450.JPEG', 'img_3450.jpg', 'img_3450.jpeg'], 'fallback-slot-6')"
                                          class="w-full h-full object-cover" alt="3D Printed Transforming Mechanical Pawn IMG_3450.jpg">
                                     
                                     <div id="fallback-slot-6" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
@@ -909,9 +860,9 @@
                     </div>
                     <div class="flex flex-wrap gap-3 mt-4 md:mt-0 print:hidden">
                         <!-- =========================================================
-                             RESUME PDF LINK: Checks Advik_Behera_Resume.pdf or Resume: Advik Behera.pdf
+                             RESUME PDF LINK: Points directly to Resume: Advik Behera.pdf
                              ========================================================= -->
-                        <a href="Advik_Behera_Resume.pdf" download="Advik_Behera_Resume.pdf" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2">
+                        <a href="Resume:%20Advik%20Behera.pdf" download="Resume: Advik Behera.pdf" target="_blank" rel="noopener" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2">
                             <i class="fas fa-download text-gtgold"></i> Download PDF Resume
                         </a>
                         <button onclick="window.print()" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
@@ -1109,18 +1060,18 @@
 
             <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
                 <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-images text-gtgold mr-1.5"></i>1. Your Exact Photo & Resume Filenames</h4>
+                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-images text-gtgold mr-1.5"></i>1. Your Exact Photo &amp; Resume Filenames</h4>
                     <p>
-                        I have updated the HTML code so that it looks for the <strong>exact filenames</strong> you specified (including automatic browser conversion for <code class="font-mono">.heic</code> photos). When you upload <code class="font-mono font-bold">index.html</code> to your GitHub repository, just drag and drop these exact files into the same folder:
+                        I have updated the HTML code so that it looks for your <strong>converted <code class="font-mono">.jpeg</code> / <code class="font-mono">.jpg</code> files</strong> automatically (checking both <code class="font-mono">.jpeg</code> and <code class="font-mono">.jpg</code> in uppercase and lowercase). In your GitHub repository alongside <code class="font-mono font-bold">index.html</code>, make sure you have:
                     </p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mt-2 font-mono text-xs bg-white p-3 rounded-lg border border-slate-200">
-                        <li>• <strong class="text-gtnavy">IMG_4953.heic</strong> (Home Portrait)</li>
-                        <li>• <strong class="text-gtnavy">IMG_9886.jpg</strong> (Volleyball Action)</li>
-                        <li>• <strong class="text-gtnavy">IMG_0024.jpg</strong> (OSU Photonics Lab)</li>
-                        <li>• <strong class="text-gtnavy">IMG_2890.heic</strong> (Dashboard UI)</li>
-                        <li>• <strong class="text-gtnavy">IMG_3452.heic</strong> (Altium PCB Layout)</li>
-                        <li>• <strong class="text-gtnavy">IMG_3450.jpg</strong> (Transforming Pawn)</li>
-                        <li class="sm:col-span-2">• <strong class="text-gtnavy">Advik_Behera_Resume.pdf</strong> (Your PDF Resume)</li>
+                        <li>• <strong class="text-gtnavy">IMG_4953.jpeg</strong> (or .jpg — Home Portrait)</li>
+                        <li>• <strong class="text-gtnavy">IMG_9886.jpeg</strong> (or .jpg — Volleyball Action)</li>
+                        <li>• <strong class="text-gtnavy">IMG_0024.jpg</strong> (or .jpeg — OSU Photonics Lab)</li>
+                        <li>• <strong class="text-gtnavy">IMG_2890.jpeg</strong> (or .jpg — Dashboard UI)</li>
+                        <li>• <strong class="text-gtnavy">IMG_3452.jpeg</strong> (or .jpg — Altium PCB Layout)</li>
+                        <li>• <strong class="text-gtnavy">IMG_3450.jpg</strong> (or .jpeg — Transforming Pawn)</li>
+                        <li class="sm:col-span-2">• <strong class="text-gtnavy">Resume: Advik Behera.pdf</strong> (Your PDF Resume)</li>
                     </ul>
                     <p class="mt-2 text-xs text-slate-500">
                         <em>Tip:</em> Because the live preview editor here doesn't store local image files on a server, you can click any photo box right now and select your photo from your computer to see it live in the preview! Once you upload the files to GitHub, they will load automatically for everyone on the internet.

@@ -64,8 +64,8 @@
                 <span class="font-mono text-[11px] text-slate-300">ADVIK BEHERA • ELECTRICAL ENGINEERING PORTFOLIO • GEORGIA TECH</span>
             </div>
             <div class="flex items-center gap-3">
-                <a href="mailto:abehera@gatech.edu" class="text-[11px] text-gtgoldlight hover:text-white font-mono transition">
-                    <i class="fas fa-envelope mr-1"></i>abehera@gatech.edu
+                <a href="mailto:abehera35@gatech.edu" class="text-[11px] text-gtgoldlight hover:text-white font-mono transition">
+                    <i class="fas fa-envelope mr-1"></i>abehera35@gatech.edu
                 </a>
                 <button id="guide-trigger-btn" onclick="toggleGuideModal()" class="bg-gtgold/20 hover:bg-gtgold text-gtgoldlight hover:text-gtnavy border border-gtgold/40 font-semibold px-2.5 py-0.5 rounded text-[11px] transition flex items-center gap-1">
                     <i class="fas fa-sliders-h"></i> Preview / Photo Setup
@@ -193,13 +193,13 @@
                                     <!-- Interactive Browser Upload Overlay -->
                                     <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
                                         <i class="fas fa-camera text-2xl text-gtgold mb-1.5"></i>
-                                        <span class="font-bold text-xs">Click to Preview Local Photo (<code class="text-gtgold font-mono">IMG_4953.heic</code>)</span>
+                                        <span class="font-bold text-xs">Click to Preview Local Photo (<code class="text-gtgold font-mono">IMG_4953.jpeg</code>)</span>
                                         <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-1', 'fallback-slot-1')">
                                     </label>
                                 </div>
 
                                 <div class="mt-3 flex items-center justify-between text-xs px-1">
-                                    <span class="text-slate-300 font-mono"><i class="fas fa-map-marker-alt text-gtgold mr-1.5"></i>Atlanta, GA • abehera@gatech.edu</span>
+                                    <span class="text-slate-300 font-mono"><i class="fas fa-map-marker-alt text-gtgold mr-1.5"></i>Atlanta, GA • abehera35@gatech.edu</span>
                                     <span class="text-gtgold font-mono text-[11px]">BSEE Class of 2030</span>
                                 </div>
                             </div>
@@ -860,180 +860,98 @@
                     </div>
                     <div class="flex flex-wrap gap-3 mt-4 md:mt-0 print:hidden">
                         <!-- =========================================================
-                             RESUME PDF LINK: Points directly to Resume: Advik Behera.pdf
+                             RESUME PDF DOWNLOAD & OPEN BUTTONS
                              ========================================================= -->
-                        <a href="Resume:%20Advik%20Behera.pdf" download="Resume: Advik Behera.pdf" target="_blank" rel="noopener" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2">
+                        <button onclick="downloadResumeFile()" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2 cursor-pointer">
                             <i class="fas fa-download text-gtgold"></i> Download PDF Resume
-                        </a>
-                        <button onclick="window.print()" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
-                            <i class="fas fa-print"></i> Save / Print Resume
                         </button>
+                        <a id="open-resume-tab-link" href="./Resume%3A%20Advik%20Behera.pdf" target="_blank" rel="noopener" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold px-4 py-2.5 rounded-xl text-xs transition flex items-center gap-2">
+                            <i class="fas fa-external-link-alt text-gtnavy"></i> Open PDF in New Tab
+                        </a>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                     
-                    <!-- Formatted 1-Page ECE Career Fair Resume View (Exact Match to Uploaded PDF) -->
-                    <div class="lg:col-span-8 bg-white rounded-2xl p-8 sm:p-10 shadow-md border border-slate-200">
-                        <div class="border-b-2 border-gtnavy pb-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                            <div>
-                                <h2 class="text-2xl sm:text-3xl font-extrabold text-gtnavy tracking-tight">ADVIK BEHERA</h2>
-                                <p class="text-sm font-semibold text-slate-600 mt-0.5">B.S. in Electrical Engineering • Georgia Institute of Technology</p>
+                    <!-- Direct Embedded PDF Viewer Showing Your Exact Uploaded Resume -->
+                    <div class="lg:col-span-8 bg-white rounded-2xl p-4 sm:p-6 shadow-md border border-slate-200 flex flex-col">
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-200">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-file-pdf text-red-600 text-lg"></i>
+                                <span class="font-bold text-sm text-slate-800">Resume: Advik Behera.pdf</span>
                             </div>
-                            <div class="text-xs text-slate-600 font-mono space-y-1 sm:text-right">
-                                <div><i class="fas fa-envelope text-gtgold mr-1"></i>abehera@gatech.edu</div>
-                                <div><i class="fas fa-map-marker-alt text-gtgold mr-1"></i>Atlanta, GA • Expected May 2030</div>
-                            </div>
+                            <label class="text-xs font-mono text-gtnavy hover:underline cursor-pointer bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition">
+                                <i class="fas fa-upload mr-1"></i>Preview Local PDF
+                                <input type="file" accept="application/pdf" class="hidden" onchange="previewLocalResumePdf(event)">
+                            </label>
                         </div>
 
-                        <!-- Resume: Objective -->
-                        <div class="mb-5">
-                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-2">Objective</h3>
-                            <p class="text-xs text-slate-700 leading-relaxed">
-                                Electrical Engineering student at Georgia Tech seeking a Summer 2027 internship in photonics, optical systems, or related engineering fields. Research experience in optical true-time-delay systems, experimental optics, and photonic signal control.
-                            </p>
+                        <!-- Embedded PDF Viewer -->
+                        <div class="w-full bg-slate-900 rounded-xl overflow-hidden border border-slate-300" style="height: 920px;">
+                            <iframe id="resume-pdf-viewer" src="./Resume%3A%20Advik%20Behera.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" class="w-full h-full border-0" title="Advik Behera Resume PDF"></iframe>
                         </div>
-
-                        <!-- Resume: Education -->
-                        <div class="mb-6">
-                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Education</h3>
-                            <div class="space-y-3 text-xs sm:text-sm">
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>Georgia Institute of Technology | Atlanta, GA</span>
-                                        <span class="font-mono text-xs text-gtnavy">Expected May 2030</span>
-                                    </div>
-                                    <p class="text-slate-700">Bachelor of Science in Electrical Engineering</p>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>Dublin Jerome High School | Dublin, OH</span>
-                                        <span class="font-mono text-xs text-slate-600">Aug 2022 – May 2026</span>
-                                    </div>
-                                    <p class="text-xs text-slate-600">High School Diploma • GPA: 4.53 • Class Rank: 13/497 • ACT: 36</p>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>The Ohio State University | Columbus, OH</span>
-                                        <span class="font-mono text-xs text-slate-600">Aug 2024 – Jan 2026</span>
-                                    </div>
-                                    <p class="text-xs text-slate-600">Dual Enrollment Coursework • GPA: 3.925</p>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>Columbus State Community College | Columbus, OH</span>
-                                        <span class="font-mono text-xs text-slate-600">May 2024 – Aug 2026</span>
-                                    </div>
-                                    <p class="text-xs text-slate-600">Dual Enrollment Coursework • GPA: 4.0</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Resume: Skills -->
-                        <div class="mb-6">
-                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Skills</h3>
-                            <div class="bg-slate-50 p-3.5 rounded-lg border border-slate-200 text-xs text-slate-700 space-y-1.5">
-                                <div><strong>Engineering:</strong> Optical Systems, Photonics, Experimental Optics, System Matrices, Polarization Control, PCB Layout &amp; Component Libraries</div>
-                                <div><strong>Laboratory:</strong> Infrared Cameras, Microscopy, Optical Alignment, Experimental Calibration, 3D Printing &amp; Mechanical Post-Processing</div>
-                                <div><strong>Software/Tools:</strong> Altium Designer, FreeCAD, Visual Studio Code, Python (Streamlit, Pandas, Plotly), Git/GitHub, Google Sheets</div>
-                            </div>
-                        </div>
-
-                        <!-- Resume: Experience -->
-                        <div class="mb-6">
-                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Experience</h3>
-                            <div class="space-y-4 text-xs sm:text-sm">
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>The Ohio State University | Columbus, OH</span>
-                                        <span class="font-mono text-xs text-gtnavy">2024 – 2026</span>
-                                    </div>
-                                    <p class="text-xs italic text-slate-600 mb-1">Photonics Research Associate</p>
-                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
-                                        <li>Conducted research on optical true-time-delay systems for phased-array applications, collaborating with the OSU ECE Associate Chair of Instruction and Battelle Memorial Institute researchers.</li>
-                                        <li>Applied system matrices, polarization control, and optical alignment while designing and building a level-shifting/calibration setup and modifying internal diffusion optics to improve experimental performance (improving IR detector thresholds from ~20 nW to 80 nW).</li>
-                                        <li>Diagnosed and repaired a six-year-old optical output-block failure, restoring functionality and presenting alignment and troubleshooting solutions to research collaborators.</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>HYTech Racing — Georgia Tech Formula SAE Electric | Atlanta, GA</span>
-                                        <span class="font-mono text-xs text-gtnavy">2026 – Present</span>
-                                    </div>
-                                    <p class="text-xs italic text-slate-600 mb-1">Team Member — Dashboard UI &amp; Altium PCB Design</p>
-                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
-                                        <li>Contributing to the vehicle Dashboard UI software and interface display architecture.</li>
-                                        <li>Designing custom schematic symbols (<code class="font-mono">.SchLib</code>), PCB footprints (<code class="font-mono">.PcbLib</code>), Integrated Libraries (<code class="font-mono">.IntLib</code>), and custom onboarding PCBs in Altium Designer.</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <div class="flex justify-between font-bold text-slate-900">
-                                        <span>Dublin Jerome High School | Dublin, OH</span>
-                                        <span class="font-mono text-xs text-gtnavy">2024 – 2026</span>
-                                    </div>
-                                    <p class="text-xs italic text-slate-600 mb-1">President, Student Council</p>
-                                    <ul class="list-disc list-inside text-xs text-slate-700 space-y-1">
-                                        <li>Led a 40-member student council, organizing school-wide initiatives including the annual Club Fair for 50+ clubs and 1,500 students.</li>
-                                        <li>Directed fundraising events that raised $2,000 and coordinated the district's Santa Phones initiative supporting 80 teachers and their families.</li>
-                                        <li>Evaluated 100+ leadership applications and held weekly planning to maintain an accountable, collaborative team.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Resume: Leadership or Activities -->
-                        <div>
-                            <h3 class="text-xs font-mono uppercase tracking-wider font-extrabold text-gtnavy bg-slate-100 px-3 py-1.5 rounded mb-3">Leadership &amp; Activities</h3>
-                            <ul class="list-disc list-inside text-xs text-slate-700 space-y-1.5">
-                                <li><strong>Model United Nations | Officer (2024–2026):</strong> Mentored 60+ members in committee strategy, negotiation, and resolution drafting. Won Best Delegate at MUNUM 2026, Outstanding Delegate at MUNUM 2025, and Best Delegate at OSUMUN 2024.</li>
-                                <li><strong>Dublin Jerome Hindu Club | President (2024–2026):</strong> Grew membership from zero to 40+ active members and coordinated cultural events involving 1,000+ students.</li>
-                                <li><strong>Volleyball | Varsity &amp; Club Player (2020–2026):</strong> AAU Boys Volleyball National Champion (15U); Steel City Tournament Champion (16U); Second-Team All-Region/All-Conference; Georgia Tech Men's Club Volleyball.</li>
-                            </ul>
-                        </div>
+                        <p class="text-[11px] text-slate-500 mt-2.5 text-center font-mono">
+                            Displaying <code class="text-gtnavy font-bold">Resume: Advik Behera.pdf</code> directly from your repository. You can also click "Download PDF Resume" above to save a copy.
+                        </p>
                     </div>
 
-                    <!-- Right Column: Contact & Highlights -->
-                    <div class="lg:col-span-4 space-y-6 print:hidden">
-                        <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 space-y-5">
-                            <h3 class="text-lg font-bold text-gtnavy flex items-center gap-2">
-                                <i class="fas fa-paper-plane text-gtgold"></i> Connect With Me
-                            </h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">
-                                I am always excited to connect with faculty, researchers, fellow engineers, and recruiters working in photonics, optical systems, RF, and electronics.
-                            </p>
+                    <!-- Right Column: Contact Details & Quick Summary -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-gtnavy text-white rounded-2xl p-7 shadow-md space-y-5">
+                            <div>
+                                <span class="text-xs font-mono uppercase tracking-wider text-gtgold font-bold">Get In Touch</span>
+                                <h2 class="text-xl font-bold mt-1">Contact Information</h2>
+                                <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                                    Feel free to reach out regarding Summer 2027 photonics/hardware internship opportunities, research collaborations, or engineering projects.
+                                </p>
+                            </div>
 
-                            <div class="space-y-3 text-xs">
-                                <a href="mailto:abehera@gatech.edu" class="p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center gap-3 transition">
-                                    <div class="w-9 h-9 rounded-lg bg-gtnavy text-gtgold flex items-center justify-center flex-shrink-0">
+                            <div class="space-y-3.5 text-sm pt-2 border-t border-white/15">
+                                <a href="mailto:abehera35@gatech.edu" class="flex items-center gap-3.5 p-3 rounded-xl bg-white/5 hover:bg-white/15 transition">
+                                    <div class="w-9 h-9 rounded-lg bg-gtgold text-gtnavy flex items-center justify-center font-bold">
                                         <i class="fas fa-envelope"></i>
                                     </div>
                                     <div>
-                                        <span class="text-slate-400 block font-mono text-[10px] uppercase">Georgia Tech Email</span>
-                                        <span class="font-bold text-gtnavy underline">abehera@gatech.edu</span>
+                                        <span class="text-[11px] font-mono text-gtgoldlight block">Georgia Tech Email</span>
+                                        <span class="font-semibold text-white text-xs sm:text-sm">abehera35@gatech.edu</span>
                                     </div>
                                 </a>
 
-                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-lg bg-gtnavy text-gtgold flex items-center justify-center flex-shrink-0">
+                                <div class="flex items-center gap-3.5 p-3 rounded-xl bg-white/5">
+                                    <div class="w-9 h-9 rounded-lg bg-gtgold/20 text-gtgold flex items-center justify-center font-bold">
                                         <i class="fas fa-university"></i>
                                     </div>
                                     <div>
-                                        <span class="text-slate-400 block font-mono text-[10px] uppercase">Institution</span>
-                                        <span class="font-bold text-slate-800">Georgia Institute of Technology (ECE)</span>
+                                        <span class="text-[11px] font-mono text-gtgoldlight block">Institution &amp; Major</span>
+                                        <span class="font-semibold text-white text-xs sm:text-sm">Georgia Tech • B.S. Electrical Engineering</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-3.5 p-3 rounded-xl bg-white/5">
+                                    <div class="w-9 h-9 rounded-lg bg-gtgold/20 text-gtgold flex items-center justify-center font-bold">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[11px] font-mono text-gtgoldlight block">Location</span>
+                                        <span class="font-semibold text-white text-xs sm:text-sm">711 Techwood Dr NW, Atlanta, GA 30318</span>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="pt-2">
+                                <button onclick="downloadResumeFile()" class="w-full py-3 px-4 rounded-xl bg-gtgold hover:bg-gtgoldhover text-gtnavy font-extrabold text-xs transition flex items-center justify-center gap-2 shadow">
+                                    <i class="fas fa-file-download"></i> Download Resume PDF
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="bg-gtnavy text-white rounded-2xl p-6 text-xs space-y-3 shadow-sm">
-                            <div class="font-bold flex items-center gap-2 text-sm text-gtgold font-mono uppercase">
-                                <i class="fas fa-microchip"></i> Summer 2027 Availability
+                        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-3">
+                            <h3 class="font-bold text-gtnavy text-sm uppercase tracking-wider font-mono">Key Technical Skills</h3>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <p><strong class="text-slate-900">Photonics &amp; Lab:</strong> Optical Systems, Experimental Optics, True-Time-Delay, System Matrices, Polarization Control, Optical Alignment, Infrared Cameras, Microscopy</p>
+                                <p><strong class="text-slate-900">Hardware &amp; ECAD:</strong> Altium Designer (Schematic Symbols, Footprints, <code class="font-mono">.IntLib</code>, Multi-Layer PCB Layout), Level-Shifting Circuits, 3D Printing &amp; Mechanical Tolerancing</p>
+                                <p><strong class="text-slate-900">Software &amp; Tools:</strong> Python (Pandas, Plotly, Streamlit), Dashboard UI Development, FreeCAD, Visual Studio Code, Git &amp; GitHub</p>
                             </div>
-                            <p class="text-slate-200 leading-relaxed">
-                                Actively seeking Summer 2027 undergraduate internships and research opportunities in photonics, optical communications, RF/phased-array engineering, and hardware development.
-                            </p>
                         </div>
                     </div>
 
@@ -1043,164 +961,73 @@
 
     </main>
 
-    <!-- =====================================================================
-         MODAL: STEP-BY-STEP PHOTO & GITHUB PAGES PUBLISHING GUIDE
-         ===================================================================== -->
-    <div id="guide-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border-2 border-gtgold space-y-5">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
-                <div>
-                    <span class="text-xs font-mono uppercase text-gtnavy font-bold">Quick Deployment Manual</span>
-                    <h3 class="text-xl font-extrabold text-slate-900">Your Uploaded Files & GitHub Pages Checklist</h3>
-                </div>
-                <button onclick="toggleGuideModal()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- FOOTER -->
+    <footer class="bg-gtnavyalt text-slate-400 py-8 border-t border-gtgold/30 mt-16 print:hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-lg bg-gtnavy text-gtgold font-bold flex items-center justify-center border border-gtgold/40">AB</div>
+                <span><strong>Advik Behera</strong> • Georgia Institute of Technology • B.S. Electrical Engineering</span>
             </div>
-
-            <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-images text-gtgold mr-1.5"></i>1. Your Exact Photo &amp; Resume Filenames</h4>
-                    <p>
-                        I have updated the HTML code so that it looks for your <strong>converted <code class="font-mono">.jpeg</code> / <code class="font-mono">.jpg</code> files</strong> automatically (checking both <code class="font-mono">.jpeg</code> and <code class="font-mono">.jpg</code> in uppercase and lowercase). In your GitHub repository alongside <code class="font-mono font-bold">index.html</code>, make sure you have:
-                    </p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mt-2 font-mono text-xs bg-white p-3 rounded-lg border border-slate-200">
-                        <li>• <strong class="text-gtnavy">IMG_4953.jpeg</strong> (or .jpg — Home Portrait)</li>
-                        <li>• <strong class="text-gtnavy">IMG_9886.jpeg</strong> (or .jpg — Volleyball Action)</li>
-                        <li>• <strong class="text-gtnavy">IMG_0024.jpg</strong> (or .jpeg — OSU Photonics Lab)</li>
-                        <li>• <strong class="text-gtnavy">IMG_2890.jpeg</strong> (or .jpg — Dashboard UI)</li>
-                        <li>• <strong class="text-gtnavy">IMG_3452.jpeg</strong> (or .jpg — Altium PCB Layout)</li>
-                        <li>• <strong class="text-gtnavy">IMG_3450.jpg</strong> (or .jpeg — Transforming Pawn)</li>
-                        <li class="sm:col-span-2">• <strong class="text-gtnavy">Resume: Advik Behera.pdf</strong> (Your PDF Resume)</li>
-                    </ul>
-                    <p class="mt-2 text-xs text-slate-500">
-                        <em>Tip:</em> Because the live preview editor here doesn't store local image files on a server, you can click any photo box right now and select your photo from your computer to see it live in the preview! Once you upload the files to GitHub, they will load automatically for everyone on the internet.
-                    </p>
-                </div>
-
-                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                    <h4 class="font-bold text-gtnavy mb-1"><i class="fas fa-globe text-gtgold mr-1.5"></i>2. How to Publish Live on GitHub Pages in 2 Minutes (100% Free)</h4>
-                    <ol class="list-decimal list-inside space-y-1.5 mt-2">
-                        <li>Download/save this file and rename it to <code class="font-mono font-bold text-gtnavy bg-slate-200 px-1.5 py-0.5 rounded">index.html</code>.</li>
-                        <li>Log into your <strong>GitHub</strong> account and click <strong>New Repository</strong>.</li>
-                        <li>Name the repository <code class="font-mono font-bold text-gtnavy">eportfolio</code>, make sure it is set to <strong>Public</strong>, and click <strong>Create repository</strong>.</li>
-                        <li>Click <strong>uploading an existing file</strong> and drag-and-drop your <code class="font-mono font-bold">index.html</code> file + your photos (<code class="font-mono">headshot.jpg</code>, etc.) + <code class="font-mono">Advik_Behera_Resume.pdf</code>, then click <strong>Commit changes</strong>.</li>
-                        <li>In your repository, click <strong>Settings</strong> (top tab) → <strong>Pages</strong> (left sidebar).</li>
-                        <li>Under <strong>Branch</strong>, change "None" to <strong>main</strong> and click <strong>Save</strong>.</li>
-                        <li>Wait 60 seconds and refresh! GitHub will give you your public link: <code class="font-mono text-gtnavy font-bold">https://[your-username].github.io/eportfolio/</code>.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="flex justify-end pt-2">
-                <button onclick="toggleGuideModal()" class="bg-gtnavy text-white font-bold px-6 py-2.5 rounded-xl text-xs">
-                    Got It, Close Guide
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gtnavyalt text-white border-t-2 border-gtgold mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
-                <div>
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded bg-gtgold text-gtnavy font-extrabold text-xs flex items-center justify-center">AB</span>
-                        <span class="font-bold text-base tracking-tight">Advik Behera • Engineering ePortfolio</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mt-1">
-                        Bachelor of Science in Electrical Engineering • Georgia Institute of Technology • Class of 2030
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 text-xs">
-                    <button onclick="switchTab('home')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Home</button>
-                    <button onclick="switchTab('about')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">About</button>
-                    <button onclick="switchTab('research')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Photonics Research</button>
-                    <button onclick="switchTab('projects')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Projects</button>
-                    <button onclick="switchTab('career')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Career Goals</button>
-                    <button onclick="switchTab('resume')" class="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-slate-300">Resume</button>
-                </div>
-            </div>
-            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
-                <span>&copy; 2026 Advik Behera. Built for Georgia Tech ECE 1100 & Professional Engineering Branding.</span>
-                <button onclick="toggleGuideModal()" class="text-gtgold hover:underline font-mono text-[11px]">
-                    <i class="fas fa-info-circle mr-1"></i>Open Photo & GitHub Pages Guide
-                </button>
+            <div class="flex items-center gap-4 font-mono text-[11px]">
+                <a href="mailto:abehera35@gatech.edu" class="hover:text-gtgold transition">abehera35@gatech.edu</a>
+                <span>•</span>
+                <span>ECE 1100 ePortfolio</span>
             </div>
         </div>
     </footer>
 
-    <!-- Interactive Navigation & Image Preview Script -->
+    <!-- PHOTO & PUBLISHING HELPER MODAL -->
+    <div id="guide-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-4 print:hidden">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <h3 class="font-extrabold text-lg text-gtnavy">GitHub File Checklist</h3>
+                <button onclick="toggleGuideModal()" class="text-slate-400 hover:text-slate-700 text-lg"><i class="fas fa-times"></i></button>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Make sure these exact files are in the same GitHub repository folder as <code class="font-mono font-bold text-gtnavy">index.html</code>:
+            </p>
+            <ul class="text-xs font-mono bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 text-slate-700">
+                <li>• <strong>IMG_4953.jpeg</strong> (or .jpg) — Home Page Profile Photo</li>
+                <li>• <strong>IMG_9886.jpeg</strong> (or .jpg) — About Me Volleyball Action Photo</li>
+                <li>• <strong>IMG_0024.jpg</strong> (or .jpeg) — OSU Photonics Lab Photo</li>
+                <li>• <strong>IMG_2890.jpeg</strong> (or .jpg) — HYTech Dashboard UI Photo</li>
+                <li>• <strong>IMG_3452.jpeg</strong> (or .jpg) — Altium PCB Layout Photo</li>
+                <li>• <strong>IMG_3450.jpg</strong> (or .jpeg) — Transforming Mechanical Pawn Photo</li>
+                <li>• <strong>Resume: Advik Behera.pdf</strong> — Your Uploaded 1-Page PDF Resume</li>
+            </ul>
+            <div class="flex justify-end pt-2">
+                <button onclick="toggleGuideModal()" class="bg-gtnavy text-white font-bold px-5 py-2 rounded-xl text-xs">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS FOR NAVIGATION, IMAGE FALLBACKS & RESUME DOWNLOAD -->
     <script>
-        async function tryDecodeHeicUrl(imgEl, heicUrl) {
-            if (typeof heic2any === 'undefined') return false;
-            try {
-                const response = await fetch(heicUrl);
-                if (!response.ok) return false;
-                const blob = await response.blob();
-                const convertedBlob = await heic2any({ blob: blob, toType: 'image/jpeg', quality: 0.9 });
-                const finalBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-                imgEl.src = URL.createObjectURL(finalBlob);
-                imgEl.style.display = 'block';
-                return true;
-            } catch (err) {
-                return false;
-            }
-        }
-
-        async function tryFallbackImage(imgEl, altList, fallbackId) {
-            // First attempt automatic HEIC decoding if this image has a .heic source and hasn't tried decoding yet
-            const heicSrc = imgEl.getAttribute('data-heic-src');
-            if (heicSrc && !imgEl.getAttribute('data-heic-tried')) {
-                imgEl.setAttribute('data-heic-tried', 'true');
-                const decoded = await tryDecodeHeicUrl(imgEl, heicSrc);
-                if (decoded) {
-                    const fb = document.getElementById(fallbackId);
-                    if (fb) fb.style.display = 'none';
-                    return;
-                }
-            }
-
-            const currentAttempt = parseInt(imgEl.getAttribute('data-attempt') || '0', 10);
-            if (currentAttempt < altList.length) {
-                imgEl.setAttribute('data-attempt', (currentAttempt + 1).toString());
-                imgEl.src = altList[currentAttempt];
-            } else {
-                imgEl.style.display = 'none';
-                const fb = document.getElementById(fallbackId);
-                if (fb) {
-                    fb.classList.remove('hidden');
-                    fb.style.display = 'flex';
-                }
-            }
-        }
-
+        // Tab Switching Logic
         function switchTab(tabId) {
-            document.querySelectorAll('.page-section').forEach(sec => sec.classList.add('hidden'));
-            const target = document.getElementById('page-' + tabId);
-            if (target) {
-                target.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            const activeSection = document.getElementById('page-' + tabId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
             }
 
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('bg-white', 'text-gtnavy', 'shadow-sm', 'font-bold');
                 btn.classList.add('text-slate-600', 'font-semibold');
             });
-
             const activeBtn = document.getElementById('nav-' + tabId);
             if (activeBtn) {
                 activeBtn.classList.remove('text-slate-600', 'font-semibold');
                 activeBtn.classList.add('bg-white', 'text-gtnavy', 'shadow-sm', 'font-bold');
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-menu-icon');
             menu.classList.toggle('hidden');
-            icon.className = menu.classList.contains('hidden') ? 'fas fa-bars text-lg' : 'fas fa-times text-lg';
         }
 
         function toggleGuideModal() {
@@ -1208,38 +1035,146 @@
             modal.classList.toggle('hidden');
         }
 
-        async function previewImage(event, imgId, fallbackId) {
+        // Smart Multi-Extension Fallback Loader (.jpeg, .jpg, .JPG, .JPEG, .heic)
+        function tryFallbackImage(imgElement, fallbackList, fallbackContainerId) {
+            if (!imgElement.dataset.fallbackIndex) {
+                imgElement.dataset.fallbackIndex = "0";
+            }
+            let idx = parseInt(imgElement.dataset.fallbackIndex, 10);
+            if (idx < fallbackList.length) {
+                const nextCandidate = fallbackList[idx];
+                imgElement.dataset.fallbackIndex = (idx + 1).toString();
+                if (nextCandidate.toLowerCase().endsWith('.heic') && typeof heic2any !== 'undefined') {
+                    fetch(nextCandidate)
+                        .then(res => {
+                            if (!res.ok) throw new Error('HEIC not found');
+                            return res.blob();
+                        })
+                        .then(blob => heic2any({ blob, toType: 'image/jpeg', quality: 0.9 }))
+                        .then(convertedBlob => {
+                            const blobToUse = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+                            imgElement.src = URL.createObjectURL(blobToUse);
+                            imgElement.style.display = 'block';
+                            const fb = document.getElementById(fallbackContainerId);
+                            if (fb) fb.style.display = 'none';
+                        })
+                        .catch(() => tryFallbackImage(imgElement, fallbackList, fallbackContainerId));
+                } else {
+                    imgElement.src = nextCandidate;
+                }
+            } else {
+                imgElement.style.display = 'none';
+                const fb = document.getElementById(fallbackContainerId);
+                if (fb) {
+                    fb.classList.remove('hidden');
+                    fb.style.display = 'flex';
+                }
+            }
+        }
+
+        // Local Browser Image Previewer
+        function previewImage(event, imgId, fallbackId) {
             const file = event.target.files[0];
             if (!file) return;
             const imgEl = document.getElementById(imgId);
-            const fallbackEl = document.getElementById(fallbackId);
+            const fbEl = document.getElementById(fallbackId);
 
-            // Support local preview of .heic files directly in browser
             if (file.name.toLowerCase().endsWith('.heic') && typeof heic2any !== 'undefined') {
-                try {
-                    const convertedBlob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 });
-                    const finalBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-                    if (imgEl && fallbackEl) {
-                        imgEl.src = URL.createObjectURL(finalBlob);
+                heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 })
+                    .then(convertedBlob => {
+                        const blobToUse = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+                        imgEl.src = URL.createObjectURL(blobToUse);
                         imgEl.style.display = 'block';
-                        fallbackEl.style.display = 'none';
+                        if (fbEl) fbEl.style.display = 'none';
+                    });
+            } else {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgEl.src = e.target.result;
+                    imgEl.style.display = 'block';
+                    if (fbEl) fbEl.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Local PDF Resume Previewer
+        let localResumeBlobUrl = null;
+        function previewLocalResumePdf(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (localResumeBlobUrl) URL.revokeObjectURL(localResumeBlobUrl);
+            localResumeBlobUrl = URL.createObjectURL(file);
+            const viewer = document.getElementById('resume-pdf-viewer');
+            if (viewer) viewer.src = localResumeBlobUrl;
+            const openLink = document.getElementById('open-resume-tab-link');
+            if (openLink) openLink.href = localResumeBlobUrl;
+        }
+
+        // Reliable Resume PDF Downloader (Handles "Resume: Advik Behera.pdf" with URL encoding)
+        async function downloadResumeFile() {
+            if (localResumeBlobUrl) {
+                const a = document.createElement('a');
+                a.href = localResumeBlobUrl;
+                a.download = 'Advik_Behera_Resume.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                return;
+            }
+
+            const candidatePaths = [
+                './Resume%3A%20Advik%20Behera.pdf',
+                'Resume%3A%20Advik%20Behera.pdf',
+                './Resume:%20Advik%20Behera.pdf',
+                './Advik_Behera_Resume.pdf',
+                './resume.pdf'
+            ];
+
+            for (const path of candidatePaths) {
+                try {
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        const blob = await response.blob();
+                        const blobUrl = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = blobUrl;
+                        a.download = 'Advik_Behera_Resume.pdf';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+                        return;
                     }
-                    return;
-                } catch (e) {
-                    console.warn('HEIC preview conversion failed, falling back to FileReader.');
+                } catch (err) {
+                    // Continue trying next candidate path
                 }
             }
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                if (imgEl && fallbackEl) {
-                    imgEl.src = e.target.result;
-                    imgEl.style.display = 'block';
-                    fallbackEl.style.display = 'none';
-                }
-            };
-            reader.readAsDataURL(file);
+            // Fallback: open directly in a new tab if fetch is restricted
+            window.open('./Resume%3A%20Advik%20Behera.pdf', '_blank');
         }
+
+        // Automatically verify which PDF URL resolves on GitHub Pages on load
+        window.addEventListener('DOMContentLoaded', async () => {
+            const viewer = document.getElementById('resume-pdf-viewer');
+            const openLink = document.getElementById('open-resume-tab-link');
+            const pdfCandidates = [
+                './Resume%3A%20Advik%20Behera.pdf',
+                './Resume:%20Advik%20Behera.pdf',
+                './Advik_Behera_Resume.pdf'
+            ];
+            for (const candidate of pdfCandidates) {
+                try {
+                    const res = await fetch(candidate, { method: 'HEAD' });
+                    if (res.ok) {
+                        if (viewer) viewer.src = candidate + '#toolbar=1&navpanes=0&scrollbar=1&view=FitH';
+                        if (openLink) openLink.href = candidate;
+                        break;
+                    }
+                } catch (e) {}
+            }
+        });
     </script>
 </body>
 </html>

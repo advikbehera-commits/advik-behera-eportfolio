@@ -38,9 +38,6 @@
             overflow: hidden;
             transition: all 0.25s ease;
         }
-        .photo-slot:hover .photo-overlay {
-            opacity: 1;
-        }
         .fade-in {
             animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -60,16 +57,14 @@
     <div class="bg-gtnavyalt text-white text-xs py-2 px-4 border-b border-gtgold/30 print:hidden">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div class="flex items-center gap-2">
-                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span class="font-mono text-[11px] text-slate-300">ADVIK BEHERA • ELECTRICAL ENGINEERING PORTFOLIO • GEORGIA TECH</span>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-4">
                 <a href="mailto:abehera35@gatech.edu" class="text-[11px] text-gtgoldlight hover:text-white font-mono transition">
                     <i class="fas fa-envelope mr-1"></i>abehera35@gatech.edu
                 </a>
-                <button id="guide-trigger-btn" onclick="toggleGuideModal()" class="bg-gtgold/20 hover:bg-gtgold text-gtgoldlight hover:text-gtnavy border border-gtgold/40 font-semibold px-2.5 py-0.5 rounded text-[11px] transition flex items-center gap-1">
-                    <i class="fas fa-sliders-h"></i> Preview / Photo Setup
-                </button>
+                <span class="text-[11px] text-slate-400 font-mono hidden sm:inline">Atlanta, GA</span>
             </div>
         </div>
     </div>
@@ -146,7 +141,7 @@
                             <div class="bg-white/5 border-l-4 border-gtgold p-5 rounded-r-xl backdrop-blur-sm space-y-2">
                                 <span class="text-[11px] font-mono uppercase tracking-wider text-gtgold font-bold block">Welcome Statement</span>
                                 <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
-                                    Welcome to my engineering ePortfolio! I am Advik Behera, an undergraduate Electrical Engineering student at the Georgia Institute of Technology driven by a curiosity for how physical principles—from optical waves to electronic signals—can be harnessed to build real-world hardware systems. Having conducted experimental photonics research on optical true-time-delay systems at The Ohio State University and currently developing embedded systems and Altium PCB libraries with Georgia Tech’s HYTech Racing Formula SAE Electric team, I thrive on hands-on prototyping and troubleshooting. This portfolio documents my technical projects, research contributions, academic roadmap, and evolving career goals in optical and electronic engineering.
+                                    Welcome to my engineering ePortfolio! I am Advik Behera, an undergraduate Electrical Engineering student at the Georgia Institute of Technology driven by a curiosity for how physical principles—from optical waves to electronic signals—can be harnessed to build real-world hardware systems. Having conducted experimental photonics research on optical true-time-delay systems at The Ohio State University and currently developing vehicle dashboard software and Altium PCB layouts with Georgia Tech’s HYTech Racing Formula SAE Electric team, I thrive on hands-on prototyping and troubleshooting. This portfolio documents my technical projects, research contributions, academic roadmap, and evolving career goals in optical and electronic engineering.
                                 </p>
                             </div>
 
@@ -155,7 +150,7 @@
                                     <i class="fas fa-microchip"></i> View Technical Projects
                                 </button>
                                 <button onclick="switchTab('research')" class="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold px-6 py-3.5 rounded-xl backdrop-blur transition flex items-center gap-2 text-sm">
-                                    <i class="fas fa-laser-pointer text-gtgold"></i> Photonics Research
+                                    <i class="fas fa-wave-square text-gtgold"></i> Photonics Research
                                 </button>
                                 <button onclick="switchTab('about')" class="bg-transparent hover:bg-white/10 border border-slate-500 text-slate-200 font-semibold px-5 py-3.5 rounded-xl transition flex items-center gap-2 text-sm">
                                     About Me <i class="fas fa-arrow-right text-xs"></i>
@@ -166,9 +161,6 @@
                         <!-- PHOTO SLOT 1: HERO HEADSHOT / LAB PORTRAIT -->
                         <div class="lg:col-span-5">
                             <div class="bg-slate-900/90 border-2 border-gtgold/50 rounded-2xl p-4 shadow-2xl">
-                                <!-- =========================================================
-                                     PHOTO SLOT 1: Checks IMG_4953.jpeg / .jpg first
-                                     ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-800 aspect-[4/3] flex flex-col items-center justify-center border border-slate-700">
                                     <img id="preview-slot-1" src="IMG_4953.jpeg" data-heic-src="IMG_4953.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-1').style.display='none';"
@@ -185,17 +177,7 @@
                                         </svg>
                                         <span class="text-white font-bold text-base">Advik Behera</span>
                                         <span class="text-gtgold text-xs font-mono mt-0.5">B.S. Electrical Engineering • Georgia Tech</span>
-                                        <p class="text-[11px] text-slate-300 mt-2 max-w-xs">
-                                            Click to preview <code class="text-gtgold font-mono">IMG_4953.heic</code> here, or place it in your GitHub repository folder.
-                                        </p>
                                     </div>
-
-                                    <!-- Interactive Browser Upload Overlay -->
-                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                        <i class="fas fa-camera text-2xl text-gtgold mb-1.5"></i>
-                                        <span class="font-bold text-xs">Click to Preview Local Photo (<code class="text-gtgold font-mono">IMG_4953.jpeg</code>)</span>
-                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-1', 'fallback-slot-1')">
-                                    </label>
                                 </div>
 
                                 <div class="mt-3 flex items-center justify-between text-xs px-1">
@@ -217,7 +199,7 @@
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Where Physics Meets Practical Hardware</h2>
                     </div>
                     <p class="text-sm text-slate-600 max-w-md mt-2 md:mt-0">
-                        My work spans experimental optics, vehicle dashboard UI & custom PCB design, and precision mechanical prototyping.
+                        My work spans experimental optics, vehicle dashboard UI &amp; custom PCB design, and precision mechanical prototyping.
                     </p>
                 </div>
 
@@ -229,7 +211,7 @@
                                 <i class="fas fa-wave-square"></i>
                             </div>
                             <span class="text-[11px] font-mono uppercase font-bold text-slate-400">The Ohio State University • Battelle</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Photonics & Optical Systems</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Photonics &amp; Optical Systems</h3>
                             <p class="text-slate-600 text-sm leading-relaxed mb-6">
                                 Researched optical true-time-delay systems for phased-array applications in Prof. Betty Lise Anderson’s lab. Applied system matrices and polarization control, repaired a 6-year-old optical output-block failure, and improved infrared detector sensitivity thresholds from ~20 nW to 80 nW.
                             </p>
@@ -246,13 +228,13 @@
                                 <i class="fas fa-microchip"></i>
                             </div>
                             <span class="text-[11px] font-mono uppercase font-bold text-slate-400">HYTech Racing • Formula SAE Electric</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Dashboard UI & Altium PCB Design</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Dashboard UI &amp; Altium PCB Design</h3>
                             <p class="text-slate-600 text-sm leading-relaxed mb-6">
                                 Working on the HYTech Racing Dashboard UI and designing custom schematic symbols, IPC footprints, Integrated Libraries (<code class="font-mono text-xs">.IntLib</code>), and custom onboarding PCBs in Altium Designer.
                             </p>
                         </div>
                         <button onclick="switchTab('projects')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-gtnavy hover:text-white text-gtnavy font-bold text-xs transition flex items-center justify-center gap-2">
-                            Explore HYTech & PCB Projects <i class="fas fa-arrow-right"></i>
+                            Explore HYTech &amp; PCB Projects <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
 
@@ -262,14 +244,14 @@
                             <div class="w-12 h-12 rounded-xl bg-gtnavy text-gtgold flex items-center justify-center text-xl mb-5 shadow-sm">
                                 <i class="fas fa-cubes"></i>
                             </div>
-                            <span class="text-[11px] font-mono uppercase font-bold text-slate-400">3D Mechanisms • Python & Streamlit</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Prototyping & Data Applications</h3>
+                            <span class="text-[11px] font-mono uppercase font-bold text-slate-400">3D Mechanisms • Python &amp; Streamlit</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-3">Prototyping &amp; Data Applications</h3>
                             <p class="text-slate-600 text-sm leading-relaxed mb-6">
                                 Fabricating multi-part mechanical assemblies—including a transforming mechanical pawn requiring precision 3D printing, dremeling, sanding, and lubrication—alongside interactive Python/Streamlit data visualization dashboards.
                             </p>
                         </div>
                         <button onclick="switchTab('projects')" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-gtnavy hover:text-white text-gtnavy font-bold text-xs transition flex items-center justify-center gap-2">
-                            See Builds & Software <i class="fas fa-arrow-right"></i>
+                            See Builds &amp; Software <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
@@ -284,7 +266,7 @@
                 
                 <!-- Section Header -->
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Biography & Personal Narrative</span>
+                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Biography &amp; Personal Narrative</span>
                     <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Hands-On Curiosity, Leadership, and Engineering</h1>
                     <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
                 </div>
@@ -312,9 +294,6 @@
                         
                         <!-- PHOTO SLOT 2: VOLLEYBALL ACTION PHOTO (IMG_9886.jpeg / .jpg) -->
                         <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
-                            <!-- =========================================================
-                                 PHOTO SLOT 2: Uses IMG_9886.jpeg / IMG_9886.jpg (Volleyball action shot)
-                                 ========================================================= -->
                             <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/5] flex flex-col items-center justify-center border border-slate-200">
                                 <img id="preview-slot-2" src="IMG_9886.jpeg" data-heic-src="IMG_9886.heic"
                                      onload="this.style.display='block'; document.getElementById('fallback-slot-2').style.display='none';"
@@ -324,17 +303,8 @@
                                 <div id="fallback-slot-2" class="hidden w-full h-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-gtnavy to-slate-800 text-white">
                                     <i class="fas fa-volleyball-ball text-3xl text-gtgold mb-2"></i>
                                     <span class="font-bold text-sm">Competitive Volleyball Action Shot</span>
-                                    <span class="text-[11px] font-mono text-gtgold mt-0.5">IMG_9886.jpeg / IMG_9886.jpg</span>
-                                    <p class="text-xs text-slate-300 mt-2">
-                                        Click to preview <code class="text-gtgold font-mono">IMG_9886.jpeg</code> or include it in your GitHub repository.
-                                    </p>
+                                    <span class="text-[11px] font-mono text-gtgold mt-0.5">Varsity &amp; Club Outside Hitter (#4)</span>
                                 </div>
-
-                                <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                    <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_9886.jpeg</code></span>
-                                    <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-2', 'fallback-slot-2')">
-                                </label>
                             </div>
                             <div class="mt-2.5 flex justify-between items-center text-xs text-slate-500 px-1">
                                 <span>Varsity &amp; Club Volleyball (#4) • 15U AAU National Champion</span>
@@ -344,7 +314,7 @@
                         <!-- Academic Profile Card -->
                         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
                             <h3 class="font-bold text-gtnavy text-base flex items-center gap-2">
-                                <i class="fas fa-graduation-cap text-gtgold"></i> Education & Academic Foundation
+                                <i class="fas fa-graduation-cap text-gtgold"></i> Education &amp; Academic Foundation
                             </h3>
                             <div class="space-y-3 text-sm">
                                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
@@ -354,13 +324,13 @@
                                     </div>
                                     <p class="text-xs text-slate-600 mt-0.5">B.S. in Electrical Engineering (BSEE)</p>
                                     <p class="text-xs text-slate-500 mt-1.5">
-                                        <strong>Coursework Exposure:</strong> ECE 1100 (Intro to ECE), CS 1301 (Intro to Computing in Python), MATH 1554 (Linear Algebra), Economics, Digital Audio & Music Technology.
+                                        <strong>Coursework Exposure:</strong> ECE 1100 (Intro to ECE), CS 1301 (Intro to Computing in Python), MATH 1554 (Linear Algebra), Economics, Digital Audio &amp; Music Technology.
                                     </p>
                                 </div>
 
                                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
                                     <div class="flex justify-between font-bold text-slate-900">
-                                        <span>The Ohio State University & CSCC</span>
+                                        <span>The Ohio State University &amp; CSCC</span>
                                         <span class="text-xs font-mono text-gtnavy">2024 – 2026</span>
                                     </div>
                                     <p class="text-xs text-slate-600 mt-0.5">OSU GPA: 3.925 (including Calculus III) • CSCC GPA: 4.00</p>
@@ -380,9 +350,9 @@
                         <div class="bg-gtnavy text-white p-6 rounded-2xl shadow-sm space-y-3">
                             <h3 class="font-bold text-gtgold text-sm uppercase tracking-wider font-mono">Georgia Tech Organizations</h3>
                             <ul class="space-y-2 text-xs text-slate-200">
-                                <li class="flex items-center gap-2"><i class="fas fa-car-battery text-gtgold w-4"></i> <strong>HYTech Racing:</strong> Formula SAE Electric (Dashboard UI & Altium PCB)</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-atom text-gtgold w-4"></i> <strong>Nanotechnology & Photonics Society (NPS):</strong> Active Member</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-users text-gtgold w-4"></i> <strong>Society of Asian Scientists & Engineers (SASE):</strong> Member</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-car-battery text-gtgold w-4"></i> <strong>HYTech Racing:</strong> Formula SAE Electric (Dashboard UI &amp; Altium PCB)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-atom text-gtgold w-4"></i> <strong>Nanotechnology &amp; Photonics Society (NPS):</strong> Active Member</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-users text-gtgold w-4"></i> <strong>Society of Asian Scientists &amp; Engineers (SASE):</strong> Member</li>
                                 <li class="flex items-center gap-2"><i class="fas fa-volleyball-ball text-gtgold w-4"></i> <strong>GT Men's Club Volleyball:</strong> Competitive Player</li>
                             </ul>
                         </div>
@@ -424,9 +394,6 @@
 
                         <!-- PHOTO SLOT 3: OPTICS LAB PHOTO (IMG_0024.jpg / .jpeg) -->
                         <div class="lg:col-span-5">
-                            <!-- =========================================================
-                                 PHOTO SLOT 3: Uses IMG_0024.jpg / IMG_0024.jpeg (Working at the optical table)
-                                 ========================================================= -->
                             <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border-2 border-gtgold/40 shadow-md">
                                 <img id="preview-slot-3" src="IMG_0024.jpg" data-heic-src="IMG_0024.heic"
                                      onload="this.style.display='block'; document.getElementById('fallback-slot-3').style.display='none';"
@@ -436,27 +403,18 @@
                                 <!-- Custom Technical SVG Diagram of Optical True-Time-Delay & IR Detector -->
                                 <div id="fallback-slot-3" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
                                     <svg class="w-full max-w-[280px] h-32 mb-2" viewBox="0 0 320 120" fill="none">
-                                        <!-- Laser Source -->
                                         <rect x="10" y="45" width="55" height="30" rx="4" fill="#003057" stroke="#B3A369" stroke-width="2"/>
                                         <text x="37" y="64" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">IR LASER</text>
-                                        <!-- Optical Path / Delay Loop -->
                                         <path d="M65 60 L115 60 L135 30 L175 90 L195 60 L235 60" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="4 2"/>
                                         <circle cx="135" cy="30" r="5" fill="#B3A369"/>
                                         <circle cx="175" cy="90" r="5" fill="#B3A369"/>
                                         <text x="155" y="18" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">Optical Delay Path</text>
-                                        <!-- Photodetector + Level Shifter -->
                                         <rect x="235" y="40" width="75" height="40" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
                                         <text x="272" y="57" fill="#38bdf8" font-size="8" text-anchor="middle" font-family="monospace">IR DETECTOR</text>
                                         <text x="272" y="70" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="monospace">20nW → 80nW</text>
                                     </svg>
-                                    <span class="font-bold text-xs text-gtgold font-mono">Optical Alignment &amp; True-Time-Delay Setup (IMG_0024.jpg)</span>
+                                    <span class="font-bold text-xs text-gtgold font-mono">Optical Alignment &amp; True-Time-Delay Setup</span>
                                 </div>
-
-                                <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                    <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                    <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_0024.jpg</code></span>
-                                    <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-3', 'fallback-slot-3')">
-                                </label>
                             </div>
                             <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
                                 <span>Optical alignment &amp; calibration in the OSU Photonics Lab</span>
@@ -469,7 +427,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
                         <div class="w-10 h-10 rounded-lg bg-gtnavy/10 text-gtnavy flex items-center justify-center font-bold mb-4">01</div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Infrared Detector Sensitivity & Diffusion Optics</h3>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Infrared Detector Sensitivity &amp; Diffusion Optics</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             Worked directly on improving the sensitivity of an infrared photodetector setup and modifying internal diffusion optics to improve experimental performance. Through systematic hardware adjustments and calibration, the measured detection threshold improved from approximately <strong>20 nW to 80 nW</strong>.
                         </p>
@@ -477,7 +435,7 @@
 
                     <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200">
                         <div class="w-10 h-10 rounded-lg bg-gtnavy/10 text-gtnavy flex items-center justify-center font-bold mb-4">02</div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Level-Shifting & Calibration Setup</h3>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Level-Shifting &amp; Calibration Setup</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             Applied system matrices, polarization control, and precision optical alignment while designing and rebuilding a level-shifting and calibration circuit setup. Gained hands-on experience in electronic signal conditioning and hardware troubleshooting at the interface between optical components and electronic circuits.
                         </p>
@@ -504,7 +462,7 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
                         <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Scalable Engineering Portfolio</span>
-                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Technical Projects & Hardware Builds</h1>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Technical Projects &amp; Hardware Builds</h1>
                         <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
                     </div>
                     <p class="text-xs font-mono text-slate-500 mt-4 md:mt-0 bg-white px-3.5 py-2 rounded-lg border border-slate-200">
@@ -524,10 +482,10 @@
                                 </div>
                                 <h2 class="text-2xl font-bold text-slate-900">1. HYTech Racing Dashboard UI Development</h2>
                                 <p class="text-slate-700 text-sm leading-relaxed">
-                                    <strong>Motivation & Context:</strong> HYTech Racing designs and builds a high-performance electric Formula SAE racecar at Georgia Tech. An intuitive, responsive Dashboard User Interface (UI) is essential for presenting critical vehicle status, telemetry, and operational feedback clearly to the driver and engineering team.
+                                    <strong>Motivation &amp; Context:</strong> HYTech Racing designs and builds a high-performance electric Formula SAE racecar at Georgia Tech. An intuitive, responsive Dashboard User Interface (UI) is essential for presenting critical vehicle status, telemetry, and operational feedback clearly to the driver and engineering team.
                                 </p>
                                 <p class="text-slate-700 text-sm leading-relaxed">
-                                    <strong>Technical Approach & My Contributions:</strong> Working with the HYTech Racing software and electrical subteams, I have been contributing to the development of the <strong>Dashboard UI</strong>. Navigating the team's repository and codebase in Visual Studio Code, I have worked on structuring and refining the interface layout and display logic so vehicle data can be visualized cleanly and reliably.
+                                    <strong>Technical Approach &amp; My Contributions:</strong> Working with the HYTech Racing software and electrical subteams, I have been contributing to the development of the <strong>Dashboard UI</strong>. Navigating the team's repository and codebase in Visual Studio Code, I have worked on structuring and refining the interface layout and display logic so vehicle data can be visualized cleanly and reliably.
                                 </p>
                                 <div class="flex flex-wrap gap-2 pt-1">
                                     <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Dashboard UI</span>
@@ -539,14 +497,11 @@
 
                             <!-- PHOTO SLOT 4: HYTECH DASHBOARD UI SCREENSHOT (IMG_2890.jpeg / .jpg) -->
                             <div class="lg:col-span-5">
-                                <!-- =========================================================
-                                     PHOTO SLOT 4: Uses IMG_2890.jpeg / IMG_2890.jpg (Dashboard UI)
-                                     ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
                                     <img id="preview-slot-4" src="IMG_2890.jpeg" data-heic-src="IMG_2890.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-4').style.display='none';"
                                          onerror="tryFallbackImage(this, ['IMG_2890.jpg', 'IMG_2890.JPEG', 'IMG_2890.JPG', 'img_2890.jpeg', 'img_2890.jpg', 'IMG_2890.heic', 'dashboard_code.jpg'], 'fallback-slot-4')"
-                                         class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI IMG_2890.jpeg">
+                                         class="w-full h-full object-cover" alt="HYTech Racing Dashboard UI">
                                     
                                     <div id="fallback-slot-4" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
                                         <svg class="w-36 h-24 mb-2" viewBox="0 0 200 110" fill="none">
@@ -557,17 +512,8 @@
                                             <text x="100" y="55" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">&lt;DashboardUI /&gt;</text>
                                             <text x="100" y="72" fill="#B3A369" font-size="8" text-anchor="middle" font-family="monospace">HYTech Telemetry Display</text>
                                         </svg>
-                                        <span class="font-bold text-xs text-gtgold font-mono">HYTech Dashboard UI (IMG_2890.jpeg)</span>
-                                        <p class="text-[11px] text-slate-300 mt-1">
-                                            Click to preview <code class="text-gtgold font-mono">IMG_2890.jpeg</code> or drop it into your GitHub repository folder.
-                                        </p>
+                                        <span class="font-bold text-xs text-gtgold font-mono">HYTech Dashboard UI</span>
                                     </div>
-
-                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/85 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                        <i class="fas fa-code text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_2890.jpeg</code></span>
-                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-4', 'fallback-slot-4')">
-                                    </label>
                                 </div>
                                 <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
                                     <span>HYTech Racing Dashboard UI Development</span>
@@ -602,40 +548,23 @@
 
                             <!-- PHOTO SLOT 5: ALTIUM DESIGNER PHOTO (IMG_3452.jpeg / .jpg) -->
                             <div class="lg:col-span-5">
-                                <!-- =========================================================
-                                     PHOTO SLOT 5: Uses IMG_3452.jpeg / IMG_3452.jpg (Altium PCB layout)
-                                     ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
                                     <img id="preview-slot-5" src="IMG_3452.jpeg" data-heic-src="IMG_3452.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-5').style.display='none';"
                                          onerror="tryFallbackImage(this, ['IMG_3452.jpg', 'IMG_3452.JPEG', 'IMG_3452.JPG', 'img_3452.jpeg', 'img_3452.jpg', 'IMG_3452.heic', 'IMG_2687.jpg', 'IMG_2687.jpeg'], 'fallback-slot-5')"
-                                         class="w-full h-full object-cover" alt="Altium Designer PCB Layout IMG_3452.jpeg">
+                                         class="w-full h-full object-cover" alt="Altium Designer PCB Layout">
                                     
                                     <div id="fallback-slot-5" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-950 text-white">
                                         <svg class="w-32 h-24 mb-2" viewBox="0 0 160 110" fill="none">
                                             <rect x="45" y="25" width="70" height="60" rx="3" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
-                                            <rect x="33" y="33" width="12" height="6" fill="#eab308"/>
-                                            <rect x="33" y="45" width="12" height="6" fill="#eab308"/>
-                                            <rect x="33" y="57" width="12" height="6" fill="#eab308"/>
-                                            <rect x="33" y="69" width="12" height="6" fill="#eab308"/>
-                                            <rect x="115" y="33" width="12" height="6" fill="#eab308"/>
-                                            <rect x="115" y="45" width="12" height="6" fill="#eab308"/>
-                                            <rect x="115" y="57" width="12" height="6" fill="#eab308"/>
-                                            <rect x="115" y="69" width="12" height="6" fill="#eab308"/>
                                             <circle cx="55" cy="35" r="3" fill="#38bdf8"/>
                                             <text x="80" y="58" fill="#22c55e" font-size="8" text-anchor="middle" font-family="monospace">555 PCB</text>
                                         </svg>
-                                        <span class="font-bold text-xs text-gtgold font-mono">Altium Keychain Onboarding PCB (IMG_3452.jpeg)</span>
+                                        <span class="font-bold text-xs text-gtgold font-mono">Altium Keychain Onboarding PCB</span>
                                     </div>
-
-                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                        <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3452.jpeg</code></span>
-                                        <input type="file" accept="image/*,.heic,.HEIC" class="hidden" onchange="previewImage(event, 'preview-slot-5', 'fallback-slot-5')">
-                                    </label>
                                 </div>
                                 <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
-                                    <span>Custom 555 Timer Keychain Onboarding PCB in Altium</span>
+                                    <span>Custom PCB &amp; Component Design in Altium</span>
                                 </div>
                             </div>
                         </div>
@@ -665,25 +594,16 @@
 
                             <!-- PHOTO SLOT 6: TRANSFORMING PAWN PHOTO (IMG_3450.jpg / .jpeg) -->
                             <div class="lg:col-span-5">
-                                <!-- =========================================================
-                                     PHOTO SLOT 6: Uses IMG_3450.jpg / IMG_3450.jpeg (Transforming Pawn)
-                                     ========================================================= -->
                                 <div class="photo-slot relative rounded-xl overflow-hidden bg-slate-900 aspect-[4/3] flex flex-col items-center justify-center border border-slate-300">
                                     <img id="preview-slot-6" src="IMG_3450.jpg" data-heic-src="IMG_3450.heic"
                                          onload="this.style.display='block'; document.getElementById('fallback-slot-6').style.display='none';"
                                          onerror="tryFallbackImage(this, ['IMG_3450.jpeg', 'IMG_3450.JPG', 'IMG_3450.JPEG', 'img_3450.jpg', 'img_3450.jpeg'], 'fallback-slot-6')"
-                                         class="w-full h-full object-cover" alt="3D Printed Transforming Mechanical Pawn IMG_3450.jpg">
+                                         class="w-full h-full object-cover" alt="3D Printed Transforming Mechanical Pawn">
                                     
                                     <div id="fallback-slot-6" class="hidden w-full h-full flex-col items-center justify-center p-5 text-center bg-slate-900 text-white">
                                         <i class="fas fa-chess-pawn text-4xl text-gtgold mb-2"></i>
-                                        <span class="font-bold text-xs text-gtgold font-mono">Transforming Mechanical Pawn (IMG_3450.jpg)</span>
+                                        <span class="font-bold text-xs text-gtgold font-mono">Transforming Mechanical Pawn</span>
                                     </div>
-
-                                    <label class="photo-overlay opacity-0 absolute inset-0 bg-gtnavy/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer text-white p-4 text-center transition">
-                                        <i class="fas fa-camera text-2xl text-gtgold mb-1"></i>
-                                        <span class="font-bold text-xs">Click to Preview <code class="text-gtgold font-mono">IMG_3450.jpg</code></span>
-                                        <input type="file" accept="image/*" class="hidden" onchange="previewImage(event, 'preview-slot-6', 'fallback-slot-6')">
-                                    </label>
                                 </div>
                                 <div class="mt-2 flex justify-between items-center text-xs text-slate-500 px-1">
                                     <span>Assembled 3D-printed transforming mechanical pawn</span>
@@ -695,18 +615,18 @@
                     <!-- PROJECT 4: PYTHON & STREAMLIT DATA APPLICATION -->
                     <div class="bg-white rounded-2xl p-7 sm:p-9 shadow-sm border border-slate-200">
                         <div class="flex flex-wrap items-center gap-2 mb-3">
-                            <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">CS 1301 • Software & Data Visualization</span>
+                            <span class="bg-gtnavy text-gtgold text-xs font-mono font-bold px-3 py-1 rounded">CS 1301 • Software &amp; Data Visualization</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-900 mb-3">4. Interactive Gaming Statistics Web Application (Python & Streamlit)</h2>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-3">4. Interactive Gaming Statistics Web Application (Python &amp; Streamlit)</h2>
                         <p class="text-slate-700 text-sm leading-relaxed mb-4">
                             Developed a multi-page interactive web application in <strong>Python</strong> using <strong>Streamlit</strong>, <strong>Pandas</strong>, and <strong>Plotly</strong>. The application integrates API requests, JSON/CSV datasets, and interactive user survey inputs to dynamically filter and visualize gaming performance metrics. Deployed via GitHub and Streamlit Community Cloud, this project strengthened my ability to build clean software interfaces for analyzing and presenting structured data.
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Python</span>
                             <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Streamlit</span>
-                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Pandas & Plotly</span>
-                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">REST APIs & JSON/CSV</span>
-                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git & GitHub</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Pandas &amp; Plotly</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">REST APIs &amp; JSON/CSV</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-mono">Git &amp; GitHub</span>
                         </div>
                     </div>
 
@@ -725,7 +645,7 @@
                         </div>
 
                         <p class="text-slate-200 text-sm leading-relaxed mb-6">
-                            <em>Note for ECE 1100 Reviewers:</em> Per the Published ePortfolio assignment guidelines, this dedicated Discovery Project Feature module is architected with all five required Design Thinking & Showcase sections and will be populated with final testing metrics and prototype photography ahead of the Discovery Project Showcase.
+                            <em>Note for ECE 1100 Reviewers:</em> Per the Published ePortfolio assignment guidelines, this dedicated Discovery Project Feature module is architected with all five required Design Thinking &amp; Showcase sections and will be populated with final testing metrics and prototype photography ahead of the Discovery Project Showcase.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-sm">
@@ -773,7 +693,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Long-Term Vision & ECE Roadmap</span>
+                    <span class="text-xs font-mono uppercase tracking-widest text-gtnavy font-bold">Long-Term Vision &amp; ECE Roadmap</span>
                     <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Career Goals: Engineering Physical Signals</h1>
                     <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
                 </div>
@@ -798,15 +718,15 @@
                             <h3 class="text-xl font-bold mt-1 mb-5">Core Career Interests</h3>
                             <ul class="space-y-4 text-sm">
                                 <li class="border-b border-white/10 pb-3">
-                                    <strong class="text-gtgold block">Photonics & Optical Systems</strong>
+                                    <strong class="text-gtgold block">Photonics &amp; Optical Systems</strong>
                                     <span class="text-xs text-slate-300">Optical communications, true-time-delay beamforming, photonic devices, and optical sensing.</span>
                                 </li>
                                 <li class="border-b border-white/10 pb-3">
-                                    <strong class="text-gtgold block">RF & Phased-Array Antennas</strong>
+                                    <strong class="text-gtgold block">RF &amp; Phased-Array Antennas</strong>
                                     <span class="text-xs text-slate-300">Microwave engineering, reconfigurable antennas, and electromagnetic signal control.</span>
                                 </li>
                                 <li>
-                                    <strong class="text-gtgold block">Electronics & Embedded Hardware</strong>
+                                    <strong class="text-gtgold block">Electronics &amp; Embedded Hardware</strong>
                                     <span class="text-xs text-slate-300">Custom PCB layout, analog/digital signal conditioning, and sensor instrumentation.</span>
                                 </li>
                             </ul>
@@ -817,7 +737,7 @@
                     </div>
                 </div>
 
-                    <!-- Step-by-Step Roadmap ("From Here to There") -->
+                <!-- Step-by-Step Roadmap ("From Here to There") -->
                 <h3 class="text-xl font-extrabold text-slate-900 mb-6">How I Will Get From Here to There: My Georgia Tech ECE Roadmap</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-2xl border-t-4 border-gtnavy shadow-sm">
@@ -829,16 +749,16 @@
                     </div>
                     <div class="bg-white p-6 rounded-2xl border-t-4 border-gtgold shadow-sm">
                         <span class="text-xs font-mono font-bold text-gtgoldhover uppercase">Phase 2 • Years 2–3</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Undergraduate Research & Internships</h4>
+                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Undergraduate Research &amp; Internships</h4>
                         <p class="text-xs text-slate-600 leading-relaxed">
-                            Pursue Electromagnetics, Semiconductor Devices, and Optical Engineering coursework at Georgia Tech. Engage in undergraduate photonics/RF research (such as VIP or faculty labs through the Nanotechnology & Photonics Society) and complete a Summer 2027 technical internship at Corning, Analog Devices, or Battelle.
+                            Pursue Electromagnetics, Semiconductor Devices, and Optical Engineering coursework at Georgia Tech. Engage in undergraduate photonics/RF research (such as VIP or faculty labs through the Nanotechnology &amp; Photonics Society) and complete a Summer 2027 technical internship at Corning, Analog Devices, or Battelle.
                         </p>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border-t-4 border-emerald-600 shadow-sm">
-                        <span class="text-xs font-mono font-bold text-emerald-700 uppercase">Phase 3 • Years 3–4 & Beyond</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Advanced Specialization & Capstone</h4>
+                        <span class="text-xs font-mono font-bold text-emerald-700 uppercase">Phase 3 • Years 3–4 &amp; Beyond</span>
+                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Advanced Specialization &amp; Capstone</h4>
                         <p class="text-xs text-slate-600 leading-relaxed">
-                            Take senior-level electives in optical systems, microwave circuits, and embedded hardware integration. Lead complex subsystem designs and transition into advanced R&D engineering or graduate research in photonics and electromagnetic systems.
+                            Take senior-level electives in optical systems, microwave circuits, and embedded hardware integration. Lead complex subsystem designs and transition into advanced R&amp;D engineering or graduate research in photonics and electromagnetic systems.
                         </p>
                     </div>
                 </div>
@@ -859,9 +779,6 @@
                         <div class="w-20 h-1.5 bg-gtgold mt-4 rounded-full"></div>
                     </div>
                     <div class="flex flex-wrap gap-3 mt-4 md:mt-0 print:hidden">
-                        <!-- =========================================================
-                             RESUME PDF DOWNLOAD & OPEN BUTTONS
-                             ========================================================= -->
                         <button onclick="downloadResumeFile()" class="bg-gtnavy hover:bg-gtnavyalt text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow transition flex items-center gap-2 cursor-pointer">
                             <i class="fas fa-download text-gtgold"></i> Download PDF Resume
                         </button>
@@ -878,21 +795,17 @@
                         <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-200">
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-file-pdf text-red-600 text-lg"></i>
-                                <span class="font-bold text-sm text-slate-800">Resume: Advik Behera.pdf</span>
+                                <span class="font-bold text-sm text-slate-800">Advik Behera — Resume (PDF)</span>
                             </div>
-                            <label class="text-xs font-mono text-gtnavy hover:underline cursor-pointer bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition">
-                                <i class="fas fa-upload mr-1"></i>Preview Local PDF
-                                <input type="file" accept="application/pdf" class="hidden" onchange="previewLocalResumePdf(event)">
-                            </label>
+                            <button onclick="downloadResumeFile()" class="text-xs font-mono text-gtnavy hover:underline bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition font-semibold">
+                                <i class="fas fa-download mr-1"></i>Save Copy
+                            </button>
                         </div>
 
                         <!-- Embedded PDF Viewer -->
                         <div class="w-full bg-slate-900 rounded-xl overflow-hidden border border-slate-300" style="height: 920px;">
                             <iframe id="resume-pdf-viewer" src="./Resume%3A%20Advik%20Behera.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH" class="w-full h-full border-0" title="Advik Behera Resume PDF"></iframe>
                         </div>
-                        <p class="text-[11px] text-slate-500 mt-2.5 text-center font-mono">
-                            Displaying <code class="text-gtnavy font-bold">Resume: Advik Behera.pdf</code> directly from your repository. You can also click "Download PDF Resume" above to save a copy.
-                        </p>
                     </div>
 
                     <!-- Right Column: Contact Details & Quick Summary -->
@@ -935,7 +848,7 @@
                                         <span class="text-[11px] font-mono text-gtgoldlight block">Location</span>
                                         <span class="font-semibold text-white text-xs sm:text-sm">711 Techwood Dr NW, Atlanta, GA 30318</span>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
                             <div class="pt-2">
@@ -976,31 +889,6 @@
         </div>
     </footer>
 
-    <!-- PHOTO & PUBLISHING HELPER MODAL -->
-    <div id="guide-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-4 print:hidden">
-        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h3 class="font-extrabold text-lg text-gtnavy">GitHub File Checklist</h3>
-                <button onclick="toggleGuideModal()" class="text-slate-400 hover:text-slate-700 text-lg"><i class="fas fa-times"></i></button>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-                Make sure these exact files are in the same GitHub repository folder as <code class="font-mono font-bold text-gtnavy">index.html</code>:
-            </p>
-            <ul class="text-xs font-mono bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 text-slate-700">
-                <li>• <strong>IMG_4953.jpeg</strong> (or .jpg) — Home Page Profile Photo</li>
-                <li>• <strong>IMG_9886.jpeg</strong> (or .jpg) — About Me Volleyball Action Photo</li>
-                <li>• <strong>IMG_0024.jpg</strong> (or .jpeg) — OSU Photonics Lab Photo</li>
-                <li>• <strong>IMG_2890.jpeg</strong> (or .jpg) — HYTech Dashboard UI Photo</li>
-                <li>• <strong>IMG_3452.jpeg</strong> (or .jpg) — Altium PCB Layout Photo</li>
-                <li>• <strong>IMG_3450.jpg</strong> (or .jpeg) — Transforming Mechanical Pawn Photo</li>
-                <li>• <strong>Resume: Advik Behera.pdf</strong> — Your Uploaded 1-Page PDF Resume</li>
-            </ul>
-            <div class="flex justify-end pt-2">
-                <button onclick="toggleGuideModal()" class="bg-gtnavy text-white font-bold px-5 py-2 rounded-xl text-xs">Close</button>
-            </div>
-        </div>
-    </div>
-
     <!-- SCRIPTS FOR NAVIGATION, IMAGE FALLBACKS & RESUME DOWNLOAD -->
     <script>
         // Tab Switching Logic
@@ -1028,11 +916,6 @@
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
-        }
-
-        function toggleGuideModal() {
-            const modal = document.getElementById('guide-modal');
-            modal.classList.toggle('hidden');
         }
 
         // Smart Multi-Extension Fallback Loader (.jpeg, .jpg, .JPG, .JPEG, .heic)
@@ -1072,57 +955,8 @@
             }
         }
 
-        // Local Browser Image Previewer
-        function previewImage(event, imgId, fallbackId) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const imgEl = document.getElementById(imgId);
-            const fbEl = document.getElementById(fallbackId);
-
-            if (file.name.toLowerCase().endsWith('.heic') && typeof heic2any !== 'undefined') {
-                heic2any({ blob: file, toType: 'image/jpeg', quality: 0.9 })
-                    .then(convertedBlob => {
-                        const blobToUse = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-                        imgEl.src = URL.createObjectURL(blobToUse);
-                        imgEl.style.display = 'block';
-                        if (fbEl) fbEl.style.display = 'none';
-                    });
-            } else {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imgEl.src = e.target.result;
-                    imgEl.style.display = 'block';
-                    if (fbEl) fbEl.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Local PDF Resume Previewer
-        let localResumeBlobUrl = null;
-        function previewLocalResumePdf(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            if (localResumeBlobUrl) URL.revokeObjectURL(localResumeBlobUrl);
-            localResumeBlobUrl = URL.createObjectURL(file);
-            const viewer = document.getElementById('resume-pdf-viewer');
-            if (viewer) viewer.src = localResumeBlobUrl;
-            const openLink = document.getElementById('open-resume-tab-link');
-            if (openLink) openLink.href = localResumeBlobUrl;
-        }
-
         // Reliable Resume PDF Downloader (Handles "Resume: Advik Behera.pdf" with URL encoding)
         async function downloadResumeFile() {
-            if (localResumeBlobUrl) {
-                const a = document.createElement('a');
-                a.href = localResumeBlobUrl;
-                a.download = 'Advik_Behera_Resume.pdf';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                return;
-            }
-
             const candidatePaths = [
                 './Resume%3A%20Advik%20Behera.pdf',
                 'Resume%3A%20Advik%20Behera.pdf',
